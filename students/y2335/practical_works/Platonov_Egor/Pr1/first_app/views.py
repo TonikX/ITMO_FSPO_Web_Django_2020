@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import Http404
-from platonov_app.models import users
+from first_app.models import users
 
 
 def detail(request, users_id):

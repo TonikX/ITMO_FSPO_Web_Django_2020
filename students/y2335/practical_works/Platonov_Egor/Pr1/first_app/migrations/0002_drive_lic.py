@@ -7,7 +7,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('platonov_app', '0001_initial'),
+        ('first_app', '0001_initial'),
     ]
 
     operations = [
@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
                 ('type', models.CharField(choices=[('RF', 'Russia'), ('I', 'International')], max_length=2)),
                 ('date_get', models.DateField()),
                 ('date_end', models.DateField()),
-                ('driver', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='platonov_app.users')),
+                ('driver', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='first_app.users')),
             ],
         ),
     ]
