@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('first_app', '0002_drive_lic'),
+        ('platonov_app', '0002_drive_lic'),
     ]
 
     operations = [
         migrations.AddField(
             model_name='users',
             name='drivers',
-            field=models.ManyToManyField(to='first_app.auto'),
+            field=models.ManyToManyField(to='platonov_app.auto'),
         ),
     ]

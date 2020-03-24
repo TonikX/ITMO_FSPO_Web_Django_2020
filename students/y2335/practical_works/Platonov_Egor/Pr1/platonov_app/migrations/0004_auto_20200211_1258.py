@@ -7,7 +7,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('first_app', '0003_users_drivers'),
+        ('platonov_app', '0003_users_drivers'),
     ]
 
     operations = [
@@ -21,13 +21,13 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('date_buy', models.DateField()),
                 ('date_Sell', models.DateField()),
-                ('auto', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='first_app.auto')),
-                ('users', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='first_app.users')),
+                ('auto', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='platonov_app.auto')),
+                ('users', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='platonov_app.users')),
             ],
         ),
         migrations.AddField(
             model_name='users',
             name='driver',
-            field=models.ManyToManyField(through='first_app.Drivers', to='first_app.auto'),
+            field=models.ManyToManyField(through='platonov_app.Drivers', to='platonov_app.auto'),
         ),
     ]
