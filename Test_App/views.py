@@ -1,6 +1,7 @@
 from django.http import Http404
 from django.shortcuts import render
-from .models import Owner
+from django.views.generic.list import ListView
+from .models import Owner, Car
 
 
 def details(request, Owner_id):
@@ -8,4 +9,11 @@ def details(request, Owner_id):
         owner = Owner.objects.get(pk=Owner_id)
     except Owner.DoesNotExist:
         raise Http404("Owner does not exist")
-    return render(request, 'owner/owner.html', {'owner': owner})
+    return render(request, 'Test_App/owner/owner.html', {'owner': owner})
+
+def OwnerList (request):
+    owners = Owner.objects.all()
+    return render(request, 'Test_App/owner/OwnerList.html', {'owners': owners})
+
+class CarList(ListView):
+    model = Car
