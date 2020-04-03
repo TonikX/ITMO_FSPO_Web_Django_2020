@@ -7,5 +7,11 @@
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:C:\Users\Valera\Desktop\ITMO_FSPO_Web_Django_2020-master\students\y2333\practical_works\Valera_MIronov\Praktos_1\db.sqlite3</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="db [2]" uuid="271a461d-0ecc-4f81-8874-a5ee123ecc31">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\Valera\Desktop\ITMO_FSPO_Web_Django_2020-master\students\y2333\practical_works\Valera_Mironov\Praktos_1\db.sqlite3</jdbc-url>
+    </data-source>
   </component>
 </project>
