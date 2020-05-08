@@ -34,4 +34,3 @@ class CarAdd(CreateView):
 
 class CarList(ListView):
     model = Car
-    
