@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    {% for object in object_list %}
+        <li>{{ object.id }}</li>
+    <li>{{ object.carMake }}</li>
+    <li>{{ object.carModel }}</li>
+    <li>{{ object.prodYear }}</li>
+        <li>{{ object.dates }}</li>
+        <hr/>
+    {% empty %}
+    <li>No objects here</li>
+    {% endfor %}
+</ul>
+</body>
+</html>
