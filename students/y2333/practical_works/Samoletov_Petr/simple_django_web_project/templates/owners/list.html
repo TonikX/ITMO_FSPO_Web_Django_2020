@@ -10,6 +10,9 @@
 <body>
     {% for Owner in owners %}
         {{ Owner.first_name }} {{ Owner.second_name }}<br>
+        {{ Owner.user.passport }} <br/>
+        {{ Owner.user.haddress }} <br/>
+        {{ Owner.user.nationality }}<br/>
         <hr/>
     {% endfor %}
 </body>
