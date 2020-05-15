@@ -1,4 +1,11 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+from django.conf import settings
+
+class User(AbstractUser):
+    passport = models.CharField(max_length=10)
+    home_address = models.CharField(max_length=150)
+    ethnic = models.CharField(max_length=30)
 
 class Car(models.Model):
     Mark = models.CharField(max_length=25)
@@ -8,6 +15,7 @@ class Car(models.Model):
 
 
 class Owner(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=30)
     second_name = models.CharField(max_length=30)
     birthday = models.DateField

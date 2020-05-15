@@ -11,6 +11,9 @@
     {% for owner in owners %}
     {{ owner.first_name }}<br/>
     {{ owner.second_name }}<br/>
+    {{ owner.user.passport }} <br/>
+    {{ owner.user.home_address }} <br/>
+    {{ owner.user.ethnic }}<br/>
     <hr/>
     {% endfor %}
     <p>Ура, вот и все владельцы!:D</p>
