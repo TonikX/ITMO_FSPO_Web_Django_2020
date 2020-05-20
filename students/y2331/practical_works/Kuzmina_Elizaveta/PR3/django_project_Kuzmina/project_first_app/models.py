@@ -14,7 +14,7 @@ class CarOwner(models.Model):
     name = models.CharField(max_length=30)
     surname = models.CharField(max_length=30)
     birthDate = models.DateField()
-    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, blank=True, null=True)
 
 
 class Car(models.Model):
