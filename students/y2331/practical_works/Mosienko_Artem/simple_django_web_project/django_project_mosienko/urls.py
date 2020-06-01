@@ -19,5 +19,9 @@ from project_first_app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path(r'owner/<int:owner_id>', views.owner)
+    path(r'owner/<int:owner_id>', views.owner),
+    path('get_owners', views.get_owners),
+    path('get_cars', views.GetCarsList.as_view()),
+    path('create_owner', views.create_owner_form),
+    path('create_car', views.CreateCarForm.as_view(success_url="/create_car")),
 ]
