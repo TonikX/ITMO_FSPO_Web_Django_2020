@@ -3,12 +3,14 @@ from perfume_app.models import *
 
 
 class UserSerializers(serializers.ModelSerializer):
+    """Пользователь для get запроса"""
     class Meta:
         model = User
         fields = ("username", "email")
 
 
 class BrokerSerializers(serializers.ModelSerializer):
+    """Маклер для get запроса"""
     broker = UserSerializers()
 
     class Meta:
@@ -17,12 +19,14 @@ class BrokerSerializers(serializers.ModelSerializer):
 
 
 class FirmSerializers(serializers.ModelSerializer):
+    """Фирма для get запроса"""
     class Meta:
         model = Firm
         fields = ("id", "name_firm", "country", "legal_address", "type_firm")
 
 
 class DealSerializers(serializers.ModelSerializer):
+    """Сделка для get запроса"""
     broker = BrokerSerializers()
     buyer = FirmSerializers()
     seller = FirmSerializers()
@@ -33,18 +37,21 @@ class DealSerializers(serializers.ModelSerializer):
 
 
 class DealCRUDSerializers(serializers.ModelSerializer):
+    """Сделка для put и post запросов"""
     class Meta:
         model = Deal
         fields = ("date_deal", "buyer", "seller")
 
 
 class FabricatorSerializers(serializers.ModelSerializer):
+    """Производитель для get запроса"""
     class Meta:
         model = Fabricator
         fields = ("id", "name_fabricator", "country", "legal_address")
 
 
 class ProductSerializers(serializers.ModelSerializer):
+    """Товар для get запроса"""
     fabricator = FabricatorSerializers()
 
     class Meta:
@@ -53,12 +60,14 @@ class ProductSerializers(serializers.ModelSerializer):
 
 
 class ProductCRUDSerializers(serializers.ModelSerializer):
+    """Товар для put и post запросов"""
     class Meta:
         model = Product
         fields = ("name", "type", "shelf_life", "sex", "fabricator")
 
 
 class OrderDealSerializers(serializers.ModelSerializer):
+    """Заказ сделки для get запроса"""
     product = ProductSerializers()
 
     class Meta:

@@ -9,6 +9,7 @@ from perfume_app.serializers import *
 
 
 class BrokerView(APIView):
+    """Просмотр маклеров"""
     permission_classes = [permissions.IsAuthenticated, ]
 
     def get(self, request):
@@ -23,6 +24,7 @@ class BrokerView(APIView):
 
 
 class FirmView(APIView):
+    """Просмотр фирм"""
     permission_classes = [permissions.IsAuthenticated, ]
 
     def get(self, request):
@@ -32,6 +34,7 @@ class FirmView(APIView):
 
 
 class DealCRUDView(APIView):
+    """CRUD сделок"""
     permission_classes = [permissions.IsAuthenticated, ]
 
     def get(self, request):
@@ -71,6 +74,7 @@ class DealCRUDView(APIView):
 
 
 class FabricatorView(APIView):
+    """Просмотр производителей"""
     permission_classes = [permissions.IsAuthenticated, ]
 
     def get(self, request):
@@ -80,6 +84,7 @@ class FabricatorView(APIView):
 
 
 class ProductCRUDView(APIView):
+    """CRUD товаров"""
     permission_classes = [permissions.IsAuthenticated, ]
 
     def get(self, request):
@@ -116,6 +121,7 @@ class ProductCRUDView(APIView):
 
 
 class OrderDealView(APIView):
+    """Просмотр заказов сделки"""
     permission_classes = [permissions.IsAuthenticated, ]
 
     def get(self, request):
