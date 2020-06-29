@@ -98,10 +98,12 @@ ENV/
 /site
 
 # mypy
+.mypy_cache/
 
 .DS_Store
 *.sqlite3
 media/
+*.pyc
 *.db
 *.pid
 # django migrations 
