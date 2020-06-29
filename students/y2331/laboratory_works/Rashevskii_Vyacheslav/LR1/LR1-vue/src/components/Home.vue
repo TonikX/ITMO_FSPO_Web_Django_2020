@@ -1,8 +1,7 @@
 <template>
     <mu-container>
         <mu-appbar
-            style="width: 100.25vmax; height: 6.2vmax; margin-top: -11vh; margin-left: -13.9vh; text-align: left"
-            color="#10df10">
+            style="width: 100.25vmax; height: 6.2vmax; margin-top: -11vh; margin-left: -13.9vh; text-align: left" color="#10df10">
             Home
             <mu-menu slot="left">
                 <mu-button large fab value="menu" class="menu-buttons">
