@@ -13,7 +13,7 @@ export const AppRouter = () => {
                     <Home />
                 </Route>
                 <Route path="/trip" component={Trip}/>
-                <Route path="/car/:int" component={Car} />
+                <Route path="/car/:id" component={Car} />
                 <Redirect to="/" />
             </Switch>
         </BrowserRouter>

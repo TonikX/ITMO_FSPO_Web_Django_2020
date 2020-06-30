@@ -1,4 +1,5 @@
 from datetime import datetime
+from decimal import Decimal
 from math import ceil
 
 from rest_framework.permissions import IsAuthenticated
@@ -46,33 +47,16 @@ class EndTrip(APIView):
             delta = ceil((end - begin).total_seconds())
             price = delta * inTrip.car.price
             transaction = Transaction.objects.create(user=request.user, delta=-price)
-            trip = Trip.objects.create(car=inTrip.car, transaction=transaction)
+            trip = Trip.objects.create(car=inTrip.car, transaction=transaction, time=Decimal(delta))
             transaction.save()
             inTrip.delete()
             trip.save()
         return Response('{}', status=200)
 
-#
-# class Trip(APIView):
-#     def get(self, request):
-#         car = Car.objects.order_by('?').first()
-#         result = CarSerializer(car, many=False)
-#         return Response(result.data)
-#
-#     def post(self, request):
-#         time = request.data['time']
-#         car = request.data['car']
-#         car = Car.objects.get(pk=car)
-#         transaction = Transaction.objects.create(user=request.user, delta=time * car.price)
-#         trip = Trip.objects.create(car=car, transaction=transaction, time=time)
-#         transaction.save()
-#         trip.save()
-#
-#
-# class History(APIView):
-#     def get(self, request):
-#         transactions = Transaction.objects.get(user=request.user)
-#         trips = Trip.objects.get(transaction=transactions)
-#         result = TripSerializer(trips, many=True)
-#         return Response(result.data)
 
+class History(APIView):
+    def get(self, request):
+        transactions = Transaction.objects.filter(user=request.user)
+        trips = Trip.objects.filter(transaction__in=transactions)
+        result = TripSerializer(trips, many=True)
+        return Response(result.data)

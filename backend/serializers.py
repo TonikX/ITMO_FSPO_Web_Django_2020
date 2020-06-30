@@ -6,10 +6,19 @@ class CarSerializer(serializers.ModelSerializer):
     class Meta:
         model = Car
         fields = ['name', 'price', 'pk']
-        # read_only_fields=fields
+
+
+class TransactionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Transaction
+        fields = ['user', 'delta', 'time']
+        read_only_fields = fields
 
 
 class TripSerializer(serializers.ModelSerializer):
+    car = CarSerializer()
+    transaction = TransactionSerializer()
+
     class Meta:
-        model = Car
+        model = Trip
         fields = ['car', 'time', 'transaction']

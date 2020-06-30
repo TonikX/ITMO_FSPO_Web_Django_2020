@@ -1,6 +1,7 @@
 import React, {useContext, useState} from "react";
 import {AuthContext} from "../context/auth";
 import {Login, Logout} from "./auth";
+import History from "./history";
 
 export const Home = () => {
     const auth = useContext(AuthContext)
@@ -10,6 +11,7 @@ export const Home = () => {
        return(
             <div>
                 <a href="/trip">Прокатимся?</a>
+                <History />
             </div>
         )
     } else {

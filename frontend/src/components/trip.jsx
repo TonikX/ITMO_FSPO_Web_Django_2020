@@ -12,7 +12,8 @@ const EndTrip = (props) => {
     return (
         <div>
             <h1>Хорошей дороги!</h1>
-            <p>Тариф: {props.price}</p>
+            <a href={'/car/' + props.car.pk}>автомобиль</a>
+            <p>Тариф: {props.car.price}</p>
             <button type="button" className="btn btn-primary" onClick={props.handler}>Пpиехали!</button>
         </div>
     )
@@ -23,7 +24,6 @@ const Trip = () => {
     const [car, setCar] = useState({name: "Самая комфортная", price: "Самя выгодная"})
     const auth = useContext(AuthContext)
     const {request} = useAuth(auth.token)
-    const history = useHistory()
 
     useEffect(() => {
         request('/api/trip/start/')
@@ -43,17 +43,17 @@ const Trip = () => {
             .catch((e) => console.log(e))
     }
 
-    console.log(car)
     if (!inTrip) {
         return (
          <div>
             <h1>{car.name}</h1>
             <p>Цена: {car.price}</p>
-             <button type="button" className="btn btn-primary" onClick={gohandler}>Поехали!</button>
+            <button type="button" className="btn btn-primary" onClick={gohandler}>Поехали!</button>
+            <button type="button" className="btn btn-info ml-5" onClick={finishhandler}>Завершить предыдущие поездки!</button>
          </div>
         )
     } else {
-       return (<EndTrip price={car.price} handler={finishhandler}/>)
+       return (<EndTrip car={car} handler={finishhandler}/>)
     }
 }
 
