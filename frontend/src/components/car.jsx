@@ -5,7 +5,6 @@ import {AuthContext} from "../context/auth";
 
 export const Car = (props) => {
     const [car, setCar] = useState({name: "Не найдена", price: "Выгодная", found: false})
-    const [broken, setBroke] = useState(false)
     const http = useHttp().request
     const auth = useContext(AuthContext)
     const {request} = useAuth(auth.token)
@@ -15,31 +14,14 @@ export const Car = (props) => {
             .then(data => setCar({...data, found: true}))
             .catch(e => console.log(e))
 
-        request('/api/repair/' + props.match.params.id)
-            .then(data => setCar(data))
-            .catch(e => console.log(e))
     }, [props.match.params.id, http, request])
 
-
-    const repairRequest = () => {
-        request('/api/repair/request')
-            .then(() => {setBroke(true)})
-            .catch(e => {console.log(e)})
-    }
-
-    const repairHandler = () => {
-        request('/api/repair/' + props.match.params.id, 'POST')
-            .then(data => setCar(data))
-            .catch(e => console.log(e))
-    }
 
     return (
         <div>
             <h1>{car.name}</h1>
             <p>Цена за минуту: {car.price}</p>
             {car.found && <a href={"/request/repair/" + car.name}>Заметил поломку</a>}
-            <br />
-            {broken && <a href={"/request/repair/" + car.name}>Починить</a>}
         </div>
     )
 }

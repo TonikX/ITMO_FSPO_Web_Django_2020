@@ -53,29 +53,6 @@ class EndTrip(APIView):
             trip.save()
         return Response('{}', status=200)
 
-class RequestRepairView(APIView):
-    permission_classes = [IsAuthenticated]
-
-    def post(self, request, pk=None):
-        pass
-
-
-class RepairView(APIView):
-    permission_classes = [IsAuthenticated]
-
-    def get(self, request, pk):
-        user = AppUser.objects.get(user=request.user)
-        car = Car.objects.get(pk=pk)
-        car = RepairRequest.objects.get(car=car).count()
-        return Response(user.user_type == 'R' and car > 0)
-
-    def post(self, request, pk):
-        car = Car.objects.get(pk)
-        request = RepairRequest.objects.get(car=car)
-        request.delete()
-        Repairs.objects.create(car=car, repairer=request.user)
-        return Response(status=200)
-
 
 class History(APIView):
     def get(self, request):

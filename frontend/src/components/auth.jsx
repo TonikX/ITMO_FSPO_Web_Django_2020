@@ -29,8 +29,7 @@ export const Login = () => {
     }
 
     if (!!auth.token)
-        // return <="h5">Привет!</p>
-        return <div></div>
+        return <p className="h5">Привет!</p>
 
     return (
         <div>

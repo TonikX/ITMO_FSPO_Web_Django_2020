@@ -44,7 +44,3 @@ class Trip(models.Model):
     car = models.ForeignKey(Car, on_delete=models.DO_NOTHING)
     time = models.DecimalField(max_length=10, max_digits=10,default=0, decimal_places=0)
     transaction = models.ForeignKey(Transaction, on_delete=models.DO_NOTHING)
-
-
-class RepairRequest(models.Model):
-    car = models.ForeignKey(Car, on_delete=models.CASCADE)
