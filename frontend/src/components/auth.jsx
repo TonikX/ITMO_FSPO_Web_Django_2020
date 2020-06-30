@@ -29,7 +29,8 @@ export const Login = () => {
     }
 
     if (!!auth.token)
-        return <p className="h5">Привет!</p>
+        // return <="h5">Привет!</p>
+        return <div></div>
 
     return (
         <div>
@@ -48,15 +49,14 @@ export const Login = () => {
 }
 
 export const Logout = () => {
-    const auth = useContext(AuthContext);
+    const auth = useContext(AuthContext)
+
     const logoutHandler = (e) => {
         e.preventDefault()
         auth.logout()
     }
 
-    if (!auth.token)
-        return <div />
-    else return (
+    return (
         <a type="button" className="btn btn-light" href="/" onClick={logoutHandler}>Выйти</a>
     )
 }

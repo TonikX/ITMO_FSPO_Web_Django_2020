@@ -44,7 +44,7 @@ class EndTrip(APIView):
         for inTrip in inTrips:
             begin = inTrip.begin.replace(tzinfo=None)
             end = datetime.now().replace(tzinfo=None)
-            delta = ceil((end - begin).total_seconds())
+            delta = ceil(((end - begin) / 60).total_seconds())
             price = delta * inTrip.car.price
             transaction = Transaction.objects.create(user=request.user, delta=-price)
             trip = Trip.objects.create(car=inTrip.car, transaction=transaction, time=Decimal(delta))
@@ -52,6 +52,29 @@ class EndTrip(APIView):
             inTrip.delete()
             trip.save()
         return Response('{}', status=200)
+
+class RequestRepairView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request, pk=None):
+        pass
+
+
+class RepairView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, pk):
+        user = AppUser.objects.get(user=request.user)
+        car = Car.objects.get(pk=pk)
+        car = RepairRequest.objects.get(car=car).count()
+        return Response(user.user_type == 'R' and car > 0)
+
+    def post(self, request, pk):
+        car = Car.objects.get(pk)
+        request = RepairRequest.objects.get(car=car)
+        request.delete()
+        Repairs.objects.create(car=car, repairer=request.user)
+        return Response(status=200)
 
 
 class History(APIView):

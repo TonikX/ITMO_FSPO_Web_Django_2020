@@ -1,21 +1,46 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {useHttp} from "../hooks/http.hook";
+import {useAuth} from "../hooks/auth.hook";
+import {AuthContext} from "../context/auth";
 
 export const Car = (props) => {
     const [car, setCar] = useState({name: "Не найдена", price: "Выгодная", found: false})
-    const {request} = useHttp()
+    const [broken, setBroke] = useState(false)
+    const http = useHttp().request
+    const auth = useContext(AuthContext)
+    const {request} = useAuth(auth.token)
 
     useEffect(() => {
-        request('/api/car/' + props.match.params.id)
+        http('/api/car/' + props.match.params.id)
             .then(data => setCar({...data, found: true}))
             .catch(e => console.log(e))
-    }, [props.match.params.id, request])
+
+        request('/api/repair/' + props.match.params.id)
+            .then(data => setCar(data))
+            .catch(e => console.log(e))
+    }, [props.match.params.id, http, request])
+
+
+    const repairRequest = () => {
+        request('/api/repair/request')
+            .then(() => {setBroke(true)})
+            .catch(e => {console.log(e)})
+    }
+
+    const repairHandler = () => {
+        request('/api/repair/' + props.match.params.id, 'POST')
+            .then(data => setCar(data))
+            .catch(e => console.log(e))
+    }
 
     return (
         <div>
             <h1>{car.name}</h1>
             <p>Цена за минуту: {car.price}</p>
             {car.found && <a href={"/request/repair/" + car.name}>Заметил поломку</a>}
+            <br />
+            {broken && <a href={"/request/repair/" + car.name}>Починить</a>}
         </div>
     )
 }
+
