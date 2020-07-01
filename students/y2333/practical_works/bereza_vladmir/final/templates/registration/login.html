@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block style %}
+    <style>
+    #square {
+    width: 120px;
+    height: 120px;
+}
+    </style>
+{% endblock %}
+{% block content %}
+<div class="container">
+	<div class="row">{% if form.errors %}
+  <p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+{% if next %}
+  {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+  {% else %}
+    <p>Please login to see this page.</p>
+  {% endif %}
+{% endif %}
+    </div>
+</div>
+
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+   <div class="container">
+	<div class="row">
+<table>
+<tr>
+  <td>{{ form.username.label_tag }}</td>
+  <td>{{ form.username }}</td>
+</tr>
+<tr>
+  <td>{{ form.password.label_tag }}</td>
+  <td>{{ form.password }}</td>
+</tr>
+    <tr>
+         <td><input class="nav-link" type="submit" value="Войти" />
+<input class="nav-link" type="hidden" name="next" value="{{ next }}" /></td><td> <p><a class="nav-link" href="{% url 'password_reset' %}">Забыли пароль?</a></p></td>
+
+    </tr>
+    <tr>
+        <div id="square"></div>
+{#     <input class="nav-link" type="hidden" name="next" value="{{ next }}" /> <p><a class="nav-link" href="{% url 'signup2_url' %}">Зарегистрироваться</a></p></td>#}
+    </tr>
+</table>
+    </div>
+ </div>
+</form>
+
+{% endblock %}
