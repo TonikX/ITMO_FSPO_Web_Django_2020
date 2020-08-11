@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All owners</title>
+</head>
+<body>
+    <table>
+      <tr>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Date of birth</th>
+      </tr>
+    {% for o in owners %}
+        <tr>
+        <td>{{o.first_name}}</td>
+        <td>{{o.last_name}}</td>
+        <td>{{o.date_of_birth}}</td>
+        </tr>
+    {% endfor %}
+    </table>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All cars</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Make</th>
+            <th>Model</th>
+            <th>Color</th>
+            <th>Registration plate</th>
+        </tr>
+        {% for car in object_list %}
+            <tr>
+                <td>{{ car.make }}</td>
+                <td>{{ car.model }}</td>
+                <td>{{ car.color }}</td>
+                <td>{{ car.registration_plate }}</td>
+            </tr>
+            {% empty %}
+            <tr><td>No cars yet.</td></tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
