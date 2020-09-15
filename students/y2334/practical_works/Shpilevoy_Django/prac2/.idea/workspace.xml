@@ -16,7 +16,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="C:/.." />
   </component>
   <component name="ProjectId" id="1cqg2PnGL0hmC2hJtDbGtuPZSrX" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -84,9 +84,14 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="188" y="185" key="FileChooserDialogImpl" timestamp="1591268249241">
-      <screen x="0" y="0" width="1600" height="860" />
+    <state x="280" y="232" key="FileChooserDialogImpl" timestamp="1592493347264">
+      <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state x="188" y="185" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1591268249241" />
+    <state x="280" y="232" key="FileChooserDialogImpl/62.0.1858.1080@62.0.1858.1080" timestamp="1592493347264" />
+    <state x="687" y="364" key="com.intellij.ide.util.TipDialog" timestamp="1592492972151">
+      <screen x="62" y="0" width="1858" height="1080" />
+    </state>
+    <state x="687" y="364" key="com.intellij.ide.util.TipDialog/62.0.1858.1080@62.0.1858.1080" timestamp="1592492972151" />
   </component>
 </project>
