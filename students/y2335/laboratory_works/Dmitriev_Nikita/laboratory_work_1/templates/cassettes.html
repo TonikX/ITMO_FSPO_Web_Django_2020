@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Каталог{% endblock %}
+{% block titlePage %}Каталог{% endblock %}
+{% block content %} {% for cassette in cassettes %}
+    <p><b>Название фильма:</b> {{ cassette.title }}<br>
+	<b>Жанр:</b> {{ cassette.subjects }}<br>
+	<b>Продюсер:</b> {{ cassette.producer }}<br>
+	<b>Год выхода:</b> {{ cassette.year_of_release }}<br>
+	<b>Студия:</b> {{ cassette.film_studio }}<br>
+	<b>Доступно:</b> {{ cassette.count }}<br>
+	<b>Цена:</b> {{ cassette.price }}</p>
+	<p>{% if user.is_authenticated %} {% if cassette.count == 0 %} Нет на складе {% else %}</p>
+	<form method="post">
+		{% csrf_token %} <input hidden="hidden" name="cassette_id" value="{{ cassette.id }}"> <button name="btn_add" type="submit">Добавить</button>
+	</form>{% endif %} {% endif %}
+	<p></p>
+	<hr>
+	{% endfor %}
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}История пополнений{% endblock %}
+{% block titlePage %}История пополнений{% endblock %}
+{% block content %}
+    {% for admission in admissions %}
+        <h3><p align="center">Дата заказа: {{ admission.date|date:"d-m-Y G:H:i" }}</p></h3>
+        <p><b>Название фильма:</b> {{ admission.cassette.title}}<br>
+        Добавлено: {{ admission.count }}<br>
+        Продавец: {{ admission.seller.last_name }} {{ admission.seller.first_name }}<br></p>
+        <hr>
+    {% endfor %}
+{% endblock %}

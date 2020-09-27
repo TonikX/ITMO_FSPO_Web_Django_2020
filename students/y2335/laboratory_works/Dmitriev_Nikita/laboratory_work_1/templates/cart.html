@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Корзина{% endblock %}
+{% block titlePage %}Корзина{% endblock %}
+{% block content %} {% for cassette in cassettes %}
+	<p><b>Название фильма:</b> {{ cassette.title }}<br>
+	<b>Цена:</b> {{ cassette.price }}<br>
+	<b>Доступно:</b> {{ cassette.count }}</p>
+	<p>Добавлено: {{ cassette.selected_count }}</p>
+	<form method="post">
+		{% csrf_token %} <input hidden="hidden" name="cassette_id" value="{{ cassette.id }}"> <input max="{{ cassette.count }}" min="1" name="count" type="number" value="1"> шт. <button name="btn_remove" type="submit">Удалить</button> <button name="btn_edit" type="submit">Изменить</button>
+	</form>
+	<p></p>
+	<hr>
+	{% endfor %}
+	<p>{% if sum_count == 0 %} Корзина пуста... {% else %} Общая цена: {{ sum_price }}<br>
+	Общее количество: {{ sum_count }}</p>
+	<form method="post">
+		{% csrf_token %} <button name="btn_confirm" type="submit">Заказать</button>
+	</form>{% endif %}
+{% endblock %}
