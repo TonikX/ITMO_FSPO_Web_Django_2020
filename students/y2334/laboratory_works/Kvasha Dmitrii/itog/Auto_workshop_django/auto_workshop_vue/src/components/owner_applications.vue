@@ -61,7 +61,7 @@
         </mu-row>
 
         <mu-dialog width="50%" :esc-press-close="false" :overlay-close="false" :open.sync="alert_dialog">
-            <span class="main-font" style="font-size: 18pt; margin: 0 auto; color: #212121">{{alert_text}}</span>
+            <span class="main-font" style="font-size: 18pt; margin: 0 auto; color: white">{{alert_text}}</span>
             <div align="center" style="margin-top: 5%">
                 <mu-button class="blue-button" slot="actions" @click="close_alert_dialog">Ок</mu-button>
             </div>

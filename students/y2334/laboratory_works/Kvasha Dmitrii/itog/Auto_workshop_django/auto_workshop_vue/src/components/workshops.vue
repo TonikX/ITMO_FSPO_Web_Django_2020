@@ -15,11 +15,11 @@
                     <span class="main-font" style="font-size: 15pt; text-align: left">{{workshop.address}}</span>
                 </mu-row>
             </mu-col>
-            <mu-col span=5 style="margin-top: 5%">
+            <mu-col span=5 style="margin-top: 5%;text-align: right" >
                 <mu-expansion-panel>
                     <div slot="header">Обслуживаемые марки:</div>
                     <mu-row v-for="brands in workshop.brands">
-                        <span class="main-font" style="font-size: 12pt; text-align: left">{{brands.brand}}</span>
+                        <span class="main-font" style="font-size: 12pt; text-align: right">{{brands.brand}}</span>
                     </mu-row>
                 </mu-expansion-panel>
             </mu-col>

@@ -14,7 +14,7 @@
             <h1 class="main-font" v-if="empty_flag" style="margin: 3% auto 0">Список заявок пуст</h1>
         </mu-row>
         <div>
-            <mu-button class="green-button" style="margin-left: 45%" @click="goto_auto_add">Добавить авто</mu-button>
+            <mu-button class="green-button" style="margin-left: -57%" @click="goto_auto_add">Добавить авто</mu-button>
         </div>
 
         <mu-row class="alert" v-if="alert">

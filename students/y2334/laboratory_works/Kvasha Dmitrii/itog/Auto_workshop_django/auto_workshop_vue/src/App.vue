@@ -7,17 +7,17 @@
 <script>
   export default {
     name: 'App',
-    
+
   }
 </script>
 
 <style>
 #app {
+    height: 3000px;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: white;
-  margin-top: 60px;
+    background: linear-gradient(220deg, #00ff8f, #001392);
 }
 </style>

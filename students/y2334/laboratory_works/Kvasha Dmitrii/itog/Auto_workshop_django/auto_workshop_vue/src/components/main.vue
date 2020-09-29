@@ -1,7 +1,8 @@
-<template>
+<template >
     <mu-container>
     <vue-headful title='Автомастерские "У котика"'/>
         <mu-row>
+
             <mu-appbar style="width: 100%" color="black">
                 <span class="main-font" style="font-size: 20pt; float: left; color:white;">Автомастерские &laquoУ котика&raquo</span>
                 <mu-button flat slot="right" @click="goto_owner_autos">Мои авто</mu-button>
@@ -15,8 +16,8 @@
         <Workshops @send_alert="catch_alert"/>
 
         <mu-dialog width="50%" :esc-press-close="false" :overlay-close="false" :open.sync="alert_dialog">
-            <span class="main-font" style="font-size: 18pt; margin: 0 auto; color: #212121">{{alert_text}}</span>
-            <div align="center" style="margin-top: 5%" color="black">
+            <span class="main-font" style="font-size: 10pt; margin: 0 auto; color: #212121;">{{alert_text}}</span>
+            <div align="center" style="margin-top: 3%" color="while">
                 <mu-button class="blue-button" slot="actions" @click="close_alert_dialog">Ок</mu-button>
             </div>
         </mu-dialog>
