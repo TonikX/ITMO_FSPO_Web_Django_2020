@@ -1,0 +1,65 @@
+.main-font {
+    color: black;
+    font-family: Bahnschrift;
+    margin-top: 20px;
+
+
+}
+.info-pannel {
+    background-color: transparent;
+    border: dashed 10px red;
+    padding: 2%;
+    margin: auto;
+    margin-top: 3%;
+
+}
+.form-pannel {
+    background-color: transparent;
+    border: solid 5px red;
+    padding: 2%;
+    margin: auto;
+}
+.form-pannel-cell {
+    color: black;
+    margin-top: 3%;
+}
+.form-label {
+    float: right;
+}
+.form-input {
+    width: 50%;
+    color: black;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid black;
+}
+.form-textarea {
+    width: 50%;
+    color: black;
+    background: transparent;
+    border: none;
+    border: 2px solid black;
+}
+.alert {
+    color: transparent;
+    background-color: white;
+    margin: 3%;
+    padding: 2%;
+}
+.red-button {
+    color: red;
+    background-color: transparent;
+    border: solid 4px red;
+    margin-left: -50%;
+}
+.green-button {
+    color: #9ba57a;
+    background-color: white;
+    border: solid 4px rgba(120, 255, 0, 0.48);
+}
+.blue-button {
+    color: #48058d;
+    background-color: transparent;
+    border: solid 4px #48058d;
+}
+
