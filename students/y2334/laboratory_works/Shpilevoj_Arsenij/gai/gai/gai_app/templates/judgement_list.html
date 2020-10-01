@@ -1,0 +1,29 @@
+<html>
+<head>
+
+</head>
+<body>
+{% for j in judgements %}
+<div class="judgement">
+    <section>
+    <h1>{{j.date_judgement}}<br>
+    {{j.time_judgement}}</h1>
+        <h3>{{j.area}}</h3>
+        {% for res in j.car.all %}
+            <h3>{{res.brand}}
+            {{res.model}}</h3>
+            <h3>{{res.license_plate}}</h3>
+            {% endfor%}
+        {% for res in j.offence.all %}
+            <h3>{{res.type}}</h3>
+            <h3>{{res.fine}} рублей</h3>
+        {% endfor%}
+        {% for res in j.inspector.all %}
+            <h3>{{res.fio_inspector}}</h3>
+        {% endfor%}
+
+    </section>
+</div>
+{% endfor %}
+</body>
+</html>
