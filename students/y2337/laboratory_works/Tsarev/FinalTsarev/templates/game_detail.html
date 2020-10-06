@@ -1,0 +1,26 @@
+{% extends 'base_main.html' %}
+
+{% block title %}
+    {{ game.game_name }}
+{% endblock %}
+
+{%  block content %}
+    <div class="card" style="width: 90%;">
+        <img src="{{ game.url_screen }}" class="card-img-top">
+        <div class="card-body">
+            <h2 class="card-title">{{ game.game_name}}</h2>
+            <h5 class="card-title"> Разработчик: {{ game.firm}}</h5>
+            <p class="card-text">{{ game.description }}</p>
+            <p><strong> Дата выпуска: {{ game.production_date }} </strong></p>
+            <p><strong> Цена: {{ game.price }} руб.</strong></p>
+            <form id="form_saling" class="form-inline" >
+                <a type="submit" href="{% url 'add_to_cart_url' game_id=game.game_id %}">Купить</a>
+            </form>
+        </div>
+        <div class="card-footer text-muted">
+            {% for genre in game.genres.all %}
+                <a href="{% url 'genre_detail_url' genre_id=genre.genre_id%}">{{ genre.genre_name }} </a> |
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,29 +1,29 @@
 {% extends 'base_main.html' %}
 
+
 {% block title %}
-    {{ genre.genre_name }}
+    Игры
 {% endblock %}
 
 {% block content %}
-    <h1 class="mb-5">{{ genre.genre_name }}</h1>
     <div class="row row-cols-1 row-cols-md-3">
-    {% for game in genre.games.all %}
-            <div class="col mb-4">
+        {% for game in game_list %}
+            <div class="col mb-4 mt-5">
                 <div class="card h-100">
                     <img src="{{ game.url_screen }}" class="card-img-top">
                     <div class="card-body">
-                        <h5 class="card-title">{{ game.game_name}}</h5>
+                        <h5 class="card-title">{{ game.game_name }}</h5>
                         <p class="card-text">{{ game.description| truncatewords:20 }}</p>
                         <a href="{% url 'game_detail_url' game_id=game.game_id %}" class="btn btn-primary">Перейти</a>
                     </div>
                 </div>
                 <div class="card-footer text-muted">
                     {% for genre in game.genres.all %}
-                        <a href="{% url 'genre_detail_url' genre_id=genre.genre_id %}">{{ genre.genre_name }} </a> |
+                        <a href="{% url 'genre_detail_url' genre_id=genre.genre_id%}">{{ genre.genre_name }} </a> |
                     {% endfor %}
                 </div>
             </div>
-    {% endfor %}
+        {% endfor %}
     </div>
 {% endblock %}
 
