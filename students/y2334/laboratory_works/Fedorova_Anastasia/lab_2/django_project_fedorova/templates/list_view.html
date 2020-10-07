@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>List</title>
+</head>
+<body>
+   <div class="main">
+    {% for data in dataset %}
+        {{ data.ow_first_name }}<br/>
+        {{ data.ow_last_name }}<br/>
+        {{ data.ow_dob }}
+    <hr/>
+    {% endfor %}
+</div>
+</body>
+</html>

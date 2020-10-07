@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vehicle List</title>
+</head>
+<body>
+<ul>
+    <!-- Iterate over object_list -->
+    {% for object in object_list %}
+    <!-- Display Objects -->
+        <li>{{ object.veh_brand }}</li>
+        <li>{{ object.veh_colour }}</li>
+        <li>{{ object.veh_model }}</li>
+        <li>{{ object.veh_plate }}</li>
+    <hr/>
+    <!-- If objet_list is empty  -->
+    {% empty %}
+    <li>No objects yet.</li>
+    {% endfor %}
+</ul>
+</body>
+</html>
