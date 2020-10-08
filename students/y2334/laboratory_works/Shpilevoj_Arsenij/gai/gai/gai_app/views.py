@@ -1,10 +1,27 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import Http404
 from .models import Car, Offence, Inspector, Judgement, Driver
 from .forms import DriverForm, CarForm, InspectorForm, OffenceForm, JudgementForm
 
 
+def menu(request):
+    if request.method=='GET':
+        if request.GET.get('car'):
+             return redirect('car_add')
+        if request.GET.get('driver'):
+            return redirect('driver_add')
+        if request.GET.get('inspector'):
+            return redirect('inspector_add')
+        if request.GET.get('judgement'):
+            return redirect('judgement_add')
+
+    context = {}
+    return render(request, "menu.html", context)
+
+
 def CarFormView(request):
+    if request.GET.get('submit'):
+        return redirect("menu")
     context = {}
 
     form = CarForm(request.POST or None)
@@ -14,6 +31,8 @@ def CarFormView(request):
     return render(request, "car_add.html", context)
 
 def DriverFormView(request):
+    if request.GET.get('submit'):
+        return redirect("menu")
     context ={}
 
     form = DriverForm(request.POST or None)
@@ -23,6 +42,8 @@ def DriverFormView(request):
     return render(request, "driver_add.html", context)
 
 def InspectorFormView(request):
+    if request.GET.get('submit'):
+        return redirect("menu")
     context ={}
 
     form = InspectorForm(request.POST or None)
@@ -32,6 +53,8 @@ def InspectorFormView(request):
     return render(request, "inspector_add.html", context)
 
 def OffenceFormView(request):
+    if request.GET.get('submit'):
+        return redirect("menu")
     context ={}
 
     form = OffenceForm(request.POST or None)
@@ -41,6 +64,8 @@ def OffenceFormView(request):
     return render(request, "offence_add.html", context)
 
 def JudgementFormView(request):
+    if request.GET.get('submit'):
+        return redirect("menu")
     context ={}
 
     form = JudgementForm(request.POST or None)

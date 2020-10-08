@@ -5,10 +5,10 @@
     <title>Добавление инспектора</title>
 </head>
 <body>
-    <form method="post" enctype="multipart/form-data">
+    <form enctype="multipart/form-data">
         {% csrf_token %}
         {{form.as_p}}
-        <input type="submit" value="submit">
+        <input type="submit" formmethod="get" name="submit" value="Подтвердить">
     </form>
 </body>
 </html>
