@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Подробная информация
+{% endblock %}
+
+{% block content %}
+    <h1>{{ n.FkRoute.Name }} </h1>
+    <p>Дата: с {{ n.DateS }} по {{ n.DateE }}</p>
+    <p>Цена: {{ n.Price }}</p>
+    <p>Количество участников: {{ n.Qty }}</p>
+    {% if n.turi != us %}
+    <a href="{{ n.get_next_url }}" class="btn btn-primary">Принять участие</a>
+    {% endif %}
+{% endblock %}
