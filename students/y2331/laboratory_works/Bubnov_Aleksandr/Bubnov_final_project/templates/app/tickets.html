@@ -1,0 +1,45 @@
+{% if user.is_authenticated %}
+{% else %}
+ <head>
+  <meta http-equiv='refresh' content='0; URL=/'>
+</head>
+  {% endif %}
+
+<p style = "margin-left:47%; font: 22pt/10pt sans-serif;">Your tickets:</p>
+{% for ticket in tickets %}
+<div style="margin-left:47%; font: 12pt/10pt sans-serif;">
+    <b>#{{  ticket.id }}</b> <br><br>
+    Category: {{ ticket.category }} <br><br>
+    Date: {{ ticket.tour.tour_datetime }} <br><br>
+</div>
+<br>
+
+
+    <a href = "/remove/{{ ticket.id }}">
+<button style = "background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    margin-left:47.5%;
+    text-decoration: none;
+    display: inline-block;
+    width:200px;
+    font-size: 14px;">Return</button>
+</a>
+    <br>
+    <br>
+{% endfor %}
+
+<a href = "/">
+<button style = "background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    margin-left:47.5%;
+    text-decoration: none;
+    display: inline-block;
+    width:200px;
+    font-size: 14px;">Main page</button>
+</a>

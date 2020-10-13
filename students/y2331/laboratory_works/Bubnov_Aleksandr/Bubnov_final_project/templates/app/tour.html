@@ -1,0 +1,22 @@
+<div style="margin-left:47%; font: 13pt/10pt sans-serif;">
+<h1>Aviable tours:</h1>
+{% for tour in tours %}
+    <b>Тур #{{ tour.id }}</b> <br><br>
+    Start date : {{ tour.tour_datetime }}<br><br>
+    Ship :  {{ tour.motorship.motorship_name }}<br><br>
+    <br>
+    <br><br><br>
+{% endfor %}
+</div>
+<a href = "/">
+<button style = "background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    margin-left:47.5%;
+    text-decoration: none;
+    display: inline-block;
+    width:200px;
+    font-size: 14px;">Main page</button>
+</a>

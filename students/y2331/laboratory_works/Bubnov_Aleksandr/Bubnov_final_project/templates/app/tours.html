@@ -1,0 +1,112 @@
+{% if user.is_authenticated %}
+     <a href="/tickets/">
+   <button style = "background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    margin-left:47%;
+    text-decoration: none;
+    display: inline-block;
+    width:200px;
+    font-size: 14px;">My tickets</button>
+    </a>
+<br>
+<br>
+      <a href="/logout/">
+   <button style = "background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    margin-left:47%;
+    text-decoration: none;
+    display: inline-block;
+    width:200px;
+    font-size: 14px;">Logout</button>
+    </a>
+  {% else %}
+    <p style = "margin-left:46.5%; font: 12pt/10pt sans-serif;">You need to log in to buy tickets</p>
+      <a href="/accounts/login/">
+   <button style = "background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    margin-left:47%;
+    text-decoration: none;
+    display: inline-block;
+    width:200px;
+    font-size: 14px;">Log in</button>
+    </a>
+  {% endif %}
+<br>
+<br>
+<a href="/find/">
+<button style = "background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    margin-left:47%;
+    text-decoration: none;
+    width:200px;
+    display: inline-block;
+    font-size: 14px;">Find tour</button>
+</a>
+
+<br><br>
+
+<a href="/motorship_list/">
+<button style = "background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    margin-left:47%;
+    text-decoration: none;
+    display: inline-block;
+    width:200px;
+    font-size: 14px;">Ship list</button>
+</a>
+<br><br>
+
+<a href="/sailor_list/">
+<button style = "background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    margin-left:47%;
+    text-decoration: none;
+    display: inline-block;
+    width:200px;
+    font-size: 14px;">Sailor list</button>
+</a>
+<br><br>
+<p style = "margin-left:47%; font: 22pt/10pt sans-serif;">Aviable tours:</p>
+{% for tour in tours %}
+    <div style="margin-left:47%; font: 10pt/10pt sans-serif;">
+    <br> <b>Tour #{{ tour.id }}</b> <br>
+    Start date: {{ tour.tour_datetime }}<br>
+    Ship:  {{ tour.motorship.motorship_name }}<br>
+    <br>
+    </div>
+{% if user.is_authenticated %}
+   <a href="/buy/{{tour.tour_id}}">
+   <button style = "background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    margin-left:47%;
+    text-decoration: none;
+    display: inline-block;
+    width:200px;
+    font-size: 14px;">Buy ticket</button>
+    </a>
+  {% endif %}
+{% endfor %}
+
+<br>
+<br>
