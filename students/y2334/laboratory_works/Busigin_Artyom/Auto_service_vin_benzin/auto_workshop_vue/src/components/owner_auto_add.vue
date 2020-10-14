@@ -40,6 +40,7 @@
                 </mu-col>
                 <mu-col span=8 class="form-pannel-cell">
                     <input class="form-input" v-model="tech_passport" type="text"/>
+                    <mu-button class="blue-button" @click="conf_auto_add">Добавить</mu-button>
                 </mu-col>
             </mu-row>
             <div style="margin: 5% auto 0">
