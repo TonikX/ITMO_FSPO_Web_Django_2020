@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<table class="table table-striped table">
+    <thead  class = "thead-light">
+    <tr>
+
+        <th scope="col">Автобус</th>
+        <th scope="col">Маршрут</th>
+        <th scope="col">Стоимость</th>
+        <th scope="col">Дата начала</th>
+        <th scope="col">Дата прибытия</th>
+        <th scope="col">Пассажиры</th>
+
+    </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td>{{ excursion.bus_id.name }}</td>
+            <td>{{ excursion.route_id.name }}</td>
+            <td>{{ excursion.price }}</td>
+            <td>{{excursion.start_date}}</td>
+            <td>{{  excursion.end_date}}</td>
+            <td>{{ excursion.n_passengers}}</td>
+
+        </tr>
+
+    </tbody>
+
+</table>
+
+<div class="album py-5 bg-light">
+    <h1 align="center">Экипаж</h1>
+    <hr>
+    <div class="container">
+
+      <div class="row">
+    <!-- Iterate over object_list -->
+    {% for member in members %}
+    <!-- Display Objects -->
+  <div class="col-md-6">
+          <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+              <p class="card-text">
+    Имя :
+   {{ member.second_name }}<br>
+    Стаж:
+   {{ member.exp }} years<br>
+    Специальность:
+   {{ member.category }}<br>
+              </p>
+
+            </div>
+          </div>
+        </div>
+          {% endfor %}
+      </div>
+    </div>
+ </div>
+{% endblock %}

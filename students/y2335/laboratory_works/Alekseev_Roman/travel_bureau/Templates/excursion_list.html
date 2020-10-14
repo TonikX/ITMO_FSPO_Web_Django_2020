@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<table class="table table-striped table-dark">
+    <thead >
+    <tr>
+        <th scope="col"></th>
+        <th scope="col">Автобус</th>
+        <th scope="col">Маршрут</th>
+        <th scope="col">Стоимость</th>
+        <th scope="col">Дата отбытия</th>
+        <th scope="col">Дата прибытия</th>
+        <th scope="col">Пассажиры</th>
+
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for exc in object_list %}
+        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ exc.bus_id.name }}</td>
+            <td>{{ exc.route_id.name }}</td>
+            <td>{{ exc.price }}</td>
+            <td>{{ exc.start_date}}</td>
+            <td>{{  exc.end_date}}</td>
+            <td>{{ exc.n_passengers}}</td>
+            <td><a href="{% url 'excursion' exc.id %}" class=" btn btn-light" >Перейти</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

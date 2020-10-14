@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+ <div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="row">
+    <!-- Iterate over object_list -->
+    {% for object in object_list %}
+    <!-- Display Objects -->
+  <div class="col-md-6">
+          <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title"> {{object.name}}</h5>
+                 <h6 class="card-subtitle mb-2 text-muted">{{ object.length }} км</h6>
+              <p class="card-text">
+
+   <strong> Пункт отправления</strong>:
+   {{ object.start_location }}<br>
+   <strong> Пункт прибытия</strong>:
+   {{ object.end_location }}<br>
+              </p>
+
+            </div>
+          </div>
+        </div>
+          {% endfor %}
+      </div>
+    </div>
+ </div>
+{% endblock %}
