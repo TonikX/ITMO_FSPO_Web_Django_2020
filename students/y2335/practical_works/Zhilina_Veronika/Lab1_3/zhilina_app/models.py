@@ -13,7 +13,8 @@ class Auto(models.Model):
 class userOwner(AbstractUser):
     passport = models.CharField(max_length=10, blank=True, null=True)
     address = models.CharField(max_length=100, blank=True, null=True)
-    nationality = models.CharField(max_length=30, blank=True, null=True)
+    nationality = models.CharField(max_length=30, blank=True,class userOwner(AbstractUser):
+ null=True)
 
 
 class Owner(models.Model):

@@ -1,0 +1,4 @@
+Django
+django-allauth
+django-crispy-forms
+psycopg2-binary>=2.8
