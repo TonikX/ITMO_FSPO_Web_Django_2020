@@ -55,6 +55,11 @@ def cancel(request, pk):
     return render(request, "app/cancel.html", {"ticket": ticket})
 
 
+class PilotCreate(CreateView):
+    model = Pilot
+    fields =['pilot_id','surname', 'position', 'birthdate', 'crew']
+
+
 def flight_buy(request, pk):
     flight = get_object_or_404(Flight, id=pk)
 
