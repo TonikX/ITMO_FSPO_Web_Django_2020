@@ -1,0 +1,46 @@
+{% if user.is_authenticated %}
+{% else %}
+ <head>
+  <meta http-equiv='refresh' content='0; URL=/'>
+</head>
+  {% endif %}
+
+<p style = "margin-left:47%; font: 22pt/10pt sans-serif;">Your flights:</p>
+{% for ticket in tickets %}
+<div style="margin-left:47%; font: 12pt/10pt sans-serif;">
+    <b>Ticket Number: {{  ticket.id }}</b> <br><br>
+    <p>Flight number: {{ ticket.flight.id }}</p>
+    <p>Category: {{ ticket.category }}</p>
+    <p>Heli: {{ ticket.flight.heli.mark }}</p>
+</div>
+<br>
+
+
+    <a href = "/cancel/{{ ticket.id }}">
+<button style = "background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    margin-left:47.5%;
+    text-decoration: none;
+    display: inline-block;
+    width:200px;
+    font-size: 14px;">Return</button>
+</a>
+    <br>
+    <br>
+{% endfor %}
+
+<a href = "/">
+<button style = "background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    margin-left:47.5%;
+    text-decoration: none;
+    display: inline-block;
+    width:200px;
+    font-size: 14px;">Main page</button>
+</a>
