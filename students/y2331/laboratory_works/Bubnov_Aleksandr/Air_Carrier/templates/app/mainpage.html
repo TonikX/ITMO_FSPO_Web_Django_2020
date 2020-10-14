@@ -1,0 +1,104 @@
+{% if user.is_authenticated %}
+     <a href="/profile/">
+   <button style = "background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    margin-left:47%;
+    text-decoration: none;
+    display: inline-block;
+    width:200px;
+    font-size: 14px;">Profile</button>
+    </a>
+<br>
+<br>
+      <a href="/logout/">
+   <button style = "background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    margin-left:47%;
+    text-decoration: none;
+    display: inline-block;
+    width:200px;
+    font-size: 14px;">Logout</button>
+    </a>
+
+
+
+  {% else %}
+      <a href="/accounts/login/">
+   <button style = "background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    margin-left:47%;
+    text-decoration: none;
+    display: inline-block;
+    width:200px;
+    font-size: 14px;">Log in</button>
+    </a>
+  {% endif %}
+
+
+
+<br>
+<br>
+<a href="/heli_list/">
+<button style = "background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    margin-left:47%;
+    text-decoration: none;
+    width:200px;
+    display: inline-block;
+    font-size: 14px;">List of heliсopters</button>
+</a>
+<br><br>
+<a href="/pilot_list/">
+<button style = "background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    margin-left:47%;
+    text-decoration: none;
+    width:200px;
+    display: inline-block;
+    font-size: 14px;">List of pilots</button>
+</a>
+
+<p style = "margin-left:47%; font: 22pt/10pt sans-serif;">Upcoming flights:</p>
+{% for flight in flights %}
+    <div style="margin-left:47%; font: 12pt/15pt sans-serif;">
+    <br> <b>Flight #{{ flight.id }}</b> <br>
+        Date: {{ flight.flight_date }}<br>
+        Duration: {{ flight.duration }} hours<br>
+        Helicopter mark: {{ flight.heli.mark }}<br>
+        Crew number: {{ flight.crew.id }}<br>
+
+    <br>
+    </div>
+{% if user.is_authenticated %}
+   <a href="/buy/{{flight.flight_id}}">
+   <button style = "background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    margin-left:47%;
+    text-decoration: none;
+    display: inline-block;
+    width:200px;
+    font-size: 14px;">Book a flight</button>
+    </a>
+  {% endif %}
+{% endfor %}
+
+<br>
+<br>

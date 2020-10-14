@@ -1,0 +1,52 @@
+{% if user.is_authenticated %}
+ <head>
+  <meta http-equiv='refresh' content='0; URL=/'>
+</head>
+  {% endif %}
+
+{% block content %}
+
+{% if form.errors %}
+  <p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+<table align = center>
+
+<tr>
+  <td>{{ form.username.label_tag }}</td>
+  <td>{{ form.username }}</td>
+</tr>
+
+<tr>
+  <td>{{ form.password.label_tag }}</td>
+  <td>{{ form.password }}</td>
+</tr>
+</table>
+
+<input style = "background-color:#4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    margin-left:48.5%;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;" type="submit" value="login" />
+<input type="hidden" name="next" value="{{ next }}" />
+</form>
+
+{% endblock %}
+
+ <a href="/register/">
+   <button style = "background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    margin-left:44%;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;">You have no account? Register</button>
+    </a>
