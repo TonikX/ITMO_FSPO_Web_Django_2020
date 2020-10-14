@@ -8,7 +8,7 @@
                 <a href="{% url 'auto_single' pk=auto.id %}" class="stretched-link">
                     <h2>{{ auto.mark }} {{ auto.model }}</h2></a>
                 <p>{{ auto.issue }} г.в., {{ auto.mileage }} км, {{ auto.transmission }},
-                    {{ auto.engine }}, {{ auto.gear }} привод</p>
+                    {{ auto.engine }}, {{ auto.gear }} привод, цена - {{ auto.price }} руб.</p>
                 <p>{{ auto.user }} | {{ auto.pub_date }}</p>
             </div>
         </div>
