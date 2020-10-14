@@ -1,0 +1,12 @@
+#!/bin/sh
+'''exec' "/Users/samoletovp/Studying/For Python/ITMO_FSPO_Web_Django_2020/students/y2333/practical_works/Samoletov_Petr/simple_django_web_project/env1/bin/python3" "$0" "$@"
+' '''
+# -*- coding: utf-8 -*-
+import re
+import sys
+
+from setuptools.command.easy_install import main
+
+if __name__ == '__main__':
+    sys.argv[0] = re.sub(r'(-script\.pyw?|\.exe)?$', '', sys.argv[0])
+    sys.exit(main())
