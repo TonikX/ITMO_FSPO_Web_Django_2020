@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Enter ID</label><br>
+            <input type="number" name="id_contract" value="{{ contract.id_contract }}"/>
+        </p>
+        <p>
+            <label>Enter title</label><br>
+            <input type="number" name="id_deliver" value="{{ contract.id_deliver }}"/>
+        </p>
+        <input type="submit" value="Сохранить">
+    </form>
+{% endblock %}

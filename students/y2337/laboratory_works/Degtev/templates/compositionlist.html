@@ -1,0 +1,26 @@
+{% extends 'main.html' %}
+{% block content %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Flower_ID</th>
+            <th scope="col">Contract_ID</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for composition in compositionslist %}
+        <tr>
+            <th scope="row">{{ composition.composition_id }}</th>
+            <td>{{ composition.title }}</td>
+            <td>{{ composition.flower_id }}</td>
+            <td>{{ composition.id_contract }}</td>
+            <td><a href="editcomposition/{{composition.composition_id}}">change</a> | <a href="del/{{composition.composition_id}}">delete</a> </td>
+
+        </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+{% endblock %}

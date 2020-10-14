@@ -1,0 +1,25 @@
+{% extends 'main.html' %}
+{% block content %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Sort</th>
+            <th scope="col">Cost</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for flower in flowers %}
+        <tr>
+            <th scope="row">{{ flower.flower_id }}</th>
+            <td>{{ flower.name }}</td>
+            <td>{{ flower.sort }}</td>
+            <td>{{ flower.cost }}</td>
+            <td><a href="editflower/{{flower.flower_id}}">change</a> | <a href="del/{{flower.flower_id}}">delete</a> </td>
+        </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'main.html' %}
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Enter ID</label><br>
+            <input type="number" name="flower_id" value="{{ flower.flower_id }}"/>
+        </p>
+        <p>
+            <label>Enter name</label><br>
+            <input type="text" name="name" value="{{ flower.name }}"/>
+        </p>
+        <p>
+            <label>Enter sort</label><br>
+            <input type="text" name="sort" value="{{ flower.sort}}"/>
+        </p>
+        <p>
+            <label>Enter cost</label><br>
+            <input type="number" name="cost" value="{{ flower.cost}}" />
+        </p>
+        <input type="submit" value="Сохранить">
+    </form>
+{% endblock %}

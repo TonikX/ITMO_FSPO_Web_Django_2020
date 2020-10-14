@@ -1,0 +1,21 @@
+{% extends 'main.html' %}
+{% block content %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">ID deliver</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for contract in contractslist %}
+            <tr>
+                <th scope="row">{{ contract.id_contract }}</th>
+                <td>{{ contract.id_deliver }}</td>
+                <td><a href="editcontract/{{contract.id_contract}}">change</a> | <a href="del/{{contract.id_contract}}">delete</a> </td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+{% endblock %}

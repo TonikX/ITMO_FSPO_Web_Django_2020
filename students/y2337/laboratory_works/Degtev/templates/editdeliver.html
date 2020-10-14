@@ -1,0 +1,19 @@
+{% extends 'main.html' %}
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Enter ID</label><br>
+            <input type="number" name="id_deliver" value="{{ deliver.id_deliver }}"/>
+        </p>
+        <p>
+            <label>Enter title</label><br>
+            <input type="date" name="date_of_acceptance" value="{{ deliver.date_of_acceptance }}"/>
+        </p>
+        <p>
+            <label>Enter flower</label><br>
+            <input type="date" name="date_of_execution" value="{{ deliver.date_of_execution}}"/>
+        </p>
+        <input type="submit" value="Сохранить">
+    </form>
+{% endblock %}
