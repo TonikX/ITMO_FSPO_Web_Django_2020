@@ -1,5 +1,39 @@
 <template>
     <v-container>
+        <v-dialog
+            v-model="detailsDialog"
+            max-width="350px"
+            >
+            <v-card>
+                <v-card-title>
+                    <span class="headline">{{details.name}}</span>
+                </v-card-title>
+                <v-card-text>
+                    <v-container>
+                        <v-row>
+                            <span>{{details.uname_name}}:</span>
+                            <v-spacer></v-spacer>
+                            <span>{{details.uname_value}}</span>
+                        </v-row>
+                        <v-row>
+                            <span>{{details.data_name}}:</span>
+                            <v-spacer></v-spacer>
+                            <span>{{details.data_value}}</span>
+                        </v-row>
+                    </v-container>
+                </v-card-text>
+
+                <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn
+                        text
+                        @click="detailsDialog=false;"
+                    >
+                        OK
+                    </v-btn>
+                </v-card-actions>
+            </v-card>
+        </v-dialog>
         <v-container v-if="authed && roleid != 'Admin'">
             <v-toolbar flat>
                     <span>You are:</span>
@@ -172,40 +206,6 @@
                     <v-btn text v-on:click='showDetails("w", item.id_furpoint)'>{{item.id_furpoint}}</v-btn>
                 </template>
             </v-data-table>
-            <v-dialog
-                v-model="detailsDialog"
-                max-width="350px"
-                >
-                <v-card>
-                    <v-card-title>
-                        <span class="headline">{{details.name}}</span>
-                    </v-card-title>
-                    <v-card-text>
-                        <v-container>
-                            <v-row>
-                                <span>{{details.uname_name}}:</span>
-                                <v-spacer></v-spacer>
-                                <span>{{details.uname_value}}</span>
-                            </v-row>
-                            <v-row>
-                                <span>{{details.data_name}}:</span>
-                                <v-spacer></v-spacer>
-                                <span>{{details.data_value}}</span>
-                            </v-row>
-                        </v-container>
-                    </v-card-text>
-
-                    <v-card-actions>
-                        <v-spacer></v-spacer>
-                        <v-btn
-                            text
-                            @click="detailsDialog=false;"
-                        >
-                            OK
-                        </v-btn>
-                    </v-card-actions>
-                </v-card>
-            </v-dialog>
         </v-container>
         <v-container v-else-if="authed && roleid == 'Admin'">
             <v-data-table
@@ -229,6 +229,29 @@
                     <span v-if="item.role == 'Admin'" class="orange--text">—</span>
                     <span v-else-if="earned(item)>=0" class="green--text">{{ earned(item) }} ₪</span>
                     <span v-else class="red--text">{{ earned(item) }} ₪</span>
+                </template>
+            </v-data-table>
+            <v-data-table
+                :headers="tbl_headersadmin2"
+                :items="admfur"
+                hide-default-footer
+                :items-per-page="-1"
+                show-group-by
+                group-by="type"
+                >
+                <template v-slot:top>
+                    <v-toolbar flat>
+                        <v-toolbar-title>Total animals killed: {{ items.reduce((a, v) => a + v.count, 0) }}</v-toolbar-title>
+                        <v-spacer></v-spacer>
+                    </v-toolbar>
+                </template>
+                <template v-slot:item.id_hunter="{ item }">
+                    <v-btn text v-on:click='showDetails("h", item.id_hunter)'>{{item.id_hunter}}</v-btn>
+                </template>
+                <template v-slot:group.header="{ group, groupBy }">
+                    <div v-if="groupBy[0]=='type'"><div class="v-btn v-btn--flat v-btn--text v-size--default">Fur type: {{group}}</div><span class="">Total killed: {{admtotal('t', group)}}</span></div>
+                    <div v-else-if="groupBy[0]=='sort'"><div class="v-btn v-btn--flat v-btn--text v-size--default">Fur sort: {{group}}</div><span class="">Total killed: {{admtotal('s', group)}}</span></div>
+                    <div v-else><div class="v-btn v-btn--flat v-btn--text v-size--default">Hunter: <v-btn text v-on:click='showDetails("h", group)'>{{group}}</v-btn></div><span class="">Total killed: {{admtotal('h', group)}}</span></div>
                 </template>
             </v-data-table>
         </v-container>
@@ -303,6 +326,12 @@
                     {text: 'Role', value: 'role'},
                     {text: 'Total earns', value: 'earn', align: 'end'},
                 ],
+                tbl_headersadmin2: [
+                    {text: 'Fur type', value: 'type'},
+                    {text: 'Fur sort', value: 'sort'},
+                    {text: 'Hunter', value: 'id_hunter'},
+                    {text: 'Count', value: 'count', align: 'end', groupable: false },
+                ],
 
                 gatherDialog: false,
                 sendDialog: false,
@@ -323,6 +352,21 @@
             },
             factoriesCbx() {
                 return Object.values(this.factories).map(x => 'Factory ' + x.id + " named " + x.name + " (manager " + x.user.username + ")")
+            },
+            admfur() {
+                return this.typesSend.map(x => {
+                    this.type = x;
+                    return this.sortsSend.map(y =>
+                    {
+                        let hts = Array.from(new Set(this.items.filter(a => a.type == x && a.sort == y).map(x => x.id_hunter)));
+                        return hts.map(z => ({
+                            type: x,
+                            sort: y,
+                            id_hunter: z,
+                            count: this.items.filter(a => a.type == x && a.sort == y && a.id_hunter == z).map(a => a.count).reduce((a, v) => a + v, 0)
+                        })).reduce((a, b) => a.concat(b), []);
+                    }).reduce((a, b) => a.concat(b), []);
+                }).reduce((a, b) => a.concat(b), []);
             },
 
             typesSend() {
@@ -389,13 +433,13 @@
             },
             pressAdd() {
                 this.$refs.formGather.validate();
-                if (!this.type) 
+                if (!this.type)
                 {
                     this.$refs.txType.focus();
                     return;
                 }
                 if (!this.form_valid) return;
-                this.axios.post("http://" + this.$me.host + "/api/1/me/data/", 
+                this.axios.post("http://" + this.$me.host + "/api/1/me/data/",
                     {
                         out: false,
                         type: this.type,
@@ -416,7 +460,7 @@
                 }
                 if (!this.form_valid) return;
 
-                this.axios.post("http://" + this.$me.host + "/api/1/me/data/", 
+                this.axios.post("http://" + this.$me.host + "/api/1/me/data/",
                     {
                         out: true,
                         type: this.type,
@@ -458,6 +502,18 @@
                         return -this.admsends.filter(x => x.id_furfactory == el.id).reduce((a, v) => a + (v.price || 0) * v.count, 0);
                 }
                 return 0;
+            },
+            admtotal(t, e) {
+                switch (t)
+                {
+                    case 't':
+                        return this.items.filter(a => a.type==e).reduce((a, v) => a + v.count, 0);
+                    case 's':
+                        return this.items.filter(a => a.sort==e).reduce((a, v) => a + v.count, 0);
+                    case 'h':
+                        return this.items.filter(a => a.id_hunter==e).reduce((a, v) => a + v.count, 0);
+                    default: return 0;
+                }
             },
             customSort(items, index, isDesc) {
                 items.sort((a, b) => {
