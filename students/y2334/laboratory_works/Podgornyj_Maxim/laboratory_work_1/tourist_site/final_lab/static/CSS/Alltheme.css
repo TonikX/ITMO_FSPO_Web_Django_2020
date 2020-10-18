@@ -1,0 +1,74 @@
+body
+{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: rgba(75, 175, 193, 0.4);
+}
+
+form
+{
+    width: 500px;
+    padding: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(70, 107, 140, 0.4);
+    text-align: center;
+    border-radius: 30px;
+    clear:both;
+}
+
+input[type = "submit"]
+{
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #599e8a;
+    padding: 14px 10px;
+    width: 200px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+input[type = "text"]:focus, input[type = "number"]:focus
+{
+    outline: none;
+}
+
+input[type = "submit"]:hover
+{
+    background: #2ecc71;
+    width: 180px;
+}
+
+input[type = "text"]:invalid, input[type = "number"]:invalid
+{
+    border-color: rgba(255, 0, 15, 0.18);
+    border-width: 2px;
+}
+
+input[type = "text"], input[type = "number"]
+{
+    border-radius: 10px;
+}
+
+input[type = "text"]:-webkit-autofill,
+input[type = "text"]:-webkit-autofill:hover,
+input[type = "text"]:-webkit-autofill:focus,
+input[type = "text"]:-webkit-autofill:active {
+  -webkit-animation: autofill 0s forwards;
+}
+
+@-webkit-keyframes autofill {
+  100% {
+    background: transparent;
+    color: inherit;
+  }
+}
