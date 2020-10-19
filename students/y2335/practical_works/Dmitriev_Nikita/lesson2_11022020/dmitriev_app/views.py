@@ -42,4 +42,3 @@ class CarsCreate(CreateView):
     success_url = "."
     model = Car
     fields = ['mark', 'model', 'state_number', 'color']
-

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Мои заказы{% endblock %}
+{% block titlePage %}Мои заказы{% endblock %}
+{% block content %}
+    {% for order in c_orders %}
+	<h3><p align="center">Дата заказа: {{ order.date|date:"d-m-Y G:H:i" }}</p></h3>{% for cassette in order.cassettes %}
+	<p><b>Название фильма:</b> {{ cassette.title }}<br>
+	<b>Цена:</b> {{ cassette.price }}<br>
+	Добавлено: {{ cassette.selected_count }}</p>{% endfor %}
+	<p>Общая цена: {{ order.sum_price }}<br>
+	Общее количество: {{ order.sum_count }}</p>
+	<hr>
+    {% endfor %}
+{% endblock %}
+

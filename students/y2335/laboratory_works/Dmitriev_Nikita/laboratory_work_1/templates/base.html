@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" name="viewport">
+	<meta content="ie=edge" http-equiv="X-UA-Compatible">
+	<title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+	{% if user.is_authenticated %}
+	<p>{% if user.username == "merchandiser" %} <a href="/admission/"><button>Пополнение товара</button></a></a> <a href="/admissions/"><button>История пополнений</button></a><a href="/logout/"><button>Выйти</button></a>{% else %} <a href="/"><button>Каталог</button></a><a href="/cart/"><button>Корзина</button></a> <a href="/orders/"><button>Мои заказы</button></a> <a href="/logout/"><button>Выйти</button></a></p>{% endif %}{% else %}
+	<p>Для приобретения товара требуется авторизация: <a href="/accounts/login/"><button>Авторизоваться</button></a></p>{% endif %}
+	<hr>
+	<p align="center" style="font-size:30px">{% block titlePage %}{% endblock %}</p>
+	<hr>
+	{% block content %} {% endblock %}
+</body>
+</html>

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Пополнение товара{% endblock %}
+{% block titlePage %}Пополнение товара{% endblock %}
+{% block content %}
+	<form method="post">
+		{% csrf_token %}
+        <b>Название кассеты:</b><br>
+        <input name="cassette_title" type="text" size="40">
+        <input min="1" name="count" type="number" value="1"> шт.
+        <button name="btn_add_cassette" type="submit">Добавить</button>
+	</form>
+	<p></p>
+    <table border="1" width="30%" cellpadding="5">
+        <tr>
+            <th>Название</th>
+            <th>Количество на складе</th>
+        </tr>
+        {% for cassette in cassettes %}
+            <tr>
+                <td>{{ cassette.title }}</td>
+                <td>{{ cassette.count }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

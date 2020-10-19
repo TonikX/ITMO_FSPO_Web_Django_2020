@@ -13,4 +13,5 @@ class OwnerForm(forms.ModelForm):
             "firstName",
             "secondName",
             "birthday",
+            "addition"
         }
