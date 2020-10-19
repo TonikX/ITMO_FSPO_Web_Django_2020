@@ -1,0 +1,36 @@
+{% extends 'eto_basa.html' %}
+
+{% block head %}
+    <link rel="stylesheet" href="src.css">
+<title>
+    Buyer list
+</title>
+{% endblock %}
+
+{% block content %}
+    <div class="d-flex ml-md-4 mt-4">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#ID</th>
+            <th scope="col">BUYER NAME</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for Buyer in object_list %}
+            <tr>
+            <th scope="col">
+                <a href="/buyer/{{ Buyer.buyer_id }}">
+                    {{ Buyer.buyer_id }}
+                </a>
+            </th>
+            <td>{{ Buyer.buyer_name }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+{% endblock %}
+
+
+

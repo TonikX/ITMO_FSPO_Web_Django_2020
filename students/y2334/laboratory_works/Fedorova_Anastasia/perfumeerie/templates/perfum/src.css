@@ -1,0 +1,12 @@
+.bs ul {
+    list-style: none;
+}
+
+.bs li {
+    content: '★';
+    color: black;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em
+}
+

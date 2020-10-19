@@ -1,0 +1,34 @@
+{% extends 'eto_basa.html' %}
+
+{% block head %}
+    <title>
+    Deal Detail
+    </title>
+{% endblock %}
+
+{% block content %}
+    <div class="d-flex ml-md-4 mt-4">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#ID</th>
+            <th scope="col">DEAL DATE</th>
+            <th scope="col">PCS SOLD</th>
+            <th scope="col">PRODUCT ID</th>
+            <th scope="col">BROKER ID</th>
+            <th scope="col">BUYER ID</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <th scope="col"> {{ Deal.deal_id }}</th>
+            <td>{{ Deal.deal_date }}</td>
+            <td>{{ Deal.deal_sold }}</td>
+            <td>{{ Deal.fk_product }}</td>
+            <td>{{ Deal.fk_broker }}</td>
+            <td>{{ Deal.fk_buyer }}</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+{% endblock %}
