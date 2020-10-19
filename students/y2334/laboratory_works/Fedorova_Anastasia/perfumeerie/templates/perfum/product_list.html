@@ -1,0 +1,41 @@
+{% extends 'eto_basa.html' %}
+
+{% block head %}
+    <link rel="stylesheet" href="src.css">
+<title>
+    Product list
+</title>
+{% endblock %}
+
+{% block content %}
+    <div class="d-flex ml-md-4 mt-4">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#ID</th>
+            <th scope="col">PRODUCT NAME</th>
+            <th scope="col">PRODUCT TYPE</th>
+            <th scope="col">PRODUCT PRICE</th>
+        </tr>
+        </thead>
+        {% for Product in object_list %}
+            <tbody>
+            <tr>
+                <th scope="col">
+                    <a href="/product/{{ Product.product_id }}">
+                        {{ Product.product_id }}
+                    </a>
+                </th>
+                <td>{{ Product.product_name }}</td>
+                <td>{{ Product.product_type }}</td>
+                <td>{{ Product.product_price }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+    </table>
+</div>
+{% endblock %}
+
+
+
+

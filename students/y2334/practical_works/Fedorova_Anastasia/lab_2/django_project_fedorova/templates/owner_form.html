@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Owner Form</title>
+    <meta content="text/html" charset="UTF-8" />
+</head>
+<body>
+<div style="align-content: center">
+    <form method="POST" enctype="multipart/form-data">
+    <!-- Security token -->
+    {% csrf_token %}
+    <!-- Using the formset -->
+    {{ form.as_p }}
+    <input type="submit" value="Submit">
+</form>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
