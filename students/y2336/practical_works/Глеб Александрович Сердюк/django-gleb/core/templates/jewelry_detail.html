@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load mathfilters %}
+{% block content %}
+    <img style="float: left" src="{{ object.image.url }}" width="550" height="550">
+    <h1>{{ object.name }}</h1>
+    <div class="row">
+        <div class="col-lg-7">
+            <br>
+            <h3>Цена: </h3>
+            <br>
+            <h3>Бренд: </h3>
+            <br>
+            <h3>Вес: </h3>
+            <br>
+            <h3>Страна производства: </h3>
+        </div>
+        <div class="col-2">
+            {% if jewelry.sale %}
+                <div class="col-2">
+                    <h6><s>{{ jewelry.price }}р.</s></h6>
+                    <h3 style="color: red">{{ 100|sub:jewelry.sale.sale_percent|div:100|mul:jewelry.price|floatformat:0 }}р.</h3>
+                </div>
+            {% else %}
+                <div class="col-2">
+                    <br>
+                    <h3>{{ jewelry.price }}р.</h3>
+                </div>
+            {% endif %}
+            <br>
+            <h3>{{ jewelry.brand }}</h3>
+            <br>
+            <h3>{{ jewelry.weight|floatformat:1 }}г.</h3>
+            <br>
+            <h3>{{ jewelry.country }}</h3>
+        </div>
+    </div>
+    <a class="btn btn-dark" style="margin-top: 30px;" href="{% url 'add-item' object.id %}">Добавить в корзину</a>
+{% endblock %}

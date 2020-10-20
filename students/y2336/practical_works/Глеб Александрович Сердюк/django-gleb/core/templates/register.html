@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <label for="username">Имя пользователя</label>
+            <br>
+            <input type="text" id="username" name="username" placeholder="Имя пользователя" required>
+            <br>
+            <label for="email">Почта</label>
+            <br>
+            <input type="email" id="email" name="email" placeholder="Почта" required>
+            <br>
+            <label for="phone_number">Номер телефона</label>
+            <br>
+            <input type="number" id="phone_number" name="phone_number" placeholder="" required>
+            <br>
+            <label for="image">Фотография</label>
+            <br>
+            <input type="file" accept="image/*" id="image" name="image" placeholder="Картинка" required>
+            <br>
+            <label for="password1">Пароль</label>
+            <br>
+            <input type="password" id="password1" name="password1" placeholder="Пароль" required>
+            <br>
+            <label for="password2">Подтверждение пароля</label>
+            <br>
+            <input type="password" id="password2" name="password2" placeholder="Потрверждение пароля" required>
+
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-primary" type="submit">Зарегистрироваться</button>
+        </div>
+    </form>
+{% endblock content %}

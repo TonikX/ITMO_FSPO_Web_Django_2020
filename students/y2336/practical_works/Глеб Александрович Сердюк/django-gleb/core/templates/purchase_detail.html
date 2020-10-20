@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load mathfilters %}
+{% block content %}
+    <h1>Вы оформили заказ {{ object.date_of_purchase }}</h1>
+    <h1>Всего к оплате было {{ object.total_price }}руб.</h1>
+    {% for jewelry in products %}
+        <div class="row">
+            <div class="col-lg-2">
+                <img class="car-img" src="{{ jewelry.product.image.url }}" width="150" height="150">
+            </div>
+            <div class="col-8">
+                <h3><a class="article-title"
+                       href="{% url 'jewelry-detail' jewelry.product.id %}">{{ jewelry.product }}</a></h3>
+            </div>
+            <div class="col-2">
+                {% if jewelry.product.sale %}
+                    <h6><s>{{ jewelry.product.price }}р.</s></h6>
+                    <h2 style="color: red">{{ 100|sub:jewelry.product.sale.sale_percent|div:100|mul:jewelry.product.price|floatformat:0 }}р.</h2>
+                {% else %}
+                    <h2>{{ jewelry.product.price }}р.</h2>
+                {% endif %}
+            </div>
+        </div>
+        <hr>
+    {% endfor %}
+
+{% endblock content %}
