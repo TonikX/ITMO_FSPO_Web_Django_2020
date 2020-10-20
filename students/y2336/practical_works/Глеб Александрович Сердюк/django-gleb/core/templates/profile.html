@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+    <img src="{{ user.image.url }}" width="300" height="300" style="float: left; margin-right: 50px">
+    <div class="row">
+        <div class="col-3">
+            <p class="profile-info">Никнейм</p>
+            <p class="profile-info">Почта</p>
+            <p class="profile-info">ФИО</p>
+            <p class="profile-info">Номер телефона</p>
+            <p class="profile-info">Список заказов</p>
+        </div>
+        <div class="col-9">
+            <p class="profile-info">{{ user.username }}</p>
+            <p class="profile-info">{{ user.email }}</p>
+            <p class="profile-info">{{ user.first_name }} {{ user.last_name }}</p>
+            <p class="profile-info">{{ user.phone_number }}</p>
+            {% for purchase in purchases %}
+                <p class="profile-info"><a href="{% url 'purchase-detail' purchase.id %}">{{ purchase }}</a></p>
+            {% endfor %}
+
+        </div>
+    </div>
+{% endblock content %}
