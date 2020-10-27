@@ -1,40 +1,55 @@
 from django.db import models
-
-# Create your models here.
-
-
-class Car (models.Model):
-    mark = models.CharField(max_length=30)
-    model = models.CharField(max_length=30)
-    year = models.IntegerField
+from django.contrib.auth.models import AbstractUser
+from django.conf import settings
 
 
-class User (models.Model):
-    GENDER = (
-        ('M', 'Male'),
+class User(AbstractUser):
+    passport = models.CharField(max_length=10)
+    address = models.CharField(max_length=100, null=True)
+    nationality = models.CharField(max_length=30, null=True)
+
+
+
+class Owner(models.Model):
+    SEX_CHOISES = [
         ('F', 'Female'),
-    )
-    first_name = models.CharField(max_length=30)
-    second_name = models.CharField(max_length=30)
-    passport = models.IntegerField
-    gender = models.CharField(max_length=1, choices=GENDER)
-    users = models.ManyToManyField(Car, through='Ownership')
+        ('M', 'Male'),
+        ('N', 'Unspecified')
+    ]
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    birth_date = models.DateField()
+    sex = models.CharField(max_length=1, choices=SEX_CHOISES)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
 
 
-class License (models.Model):
-    TYPE = (
-        ('H', 'Home'),
-        ('F', 'Foreign'),
-    )
-    driver = models.ForeignKey(User, on_delete=models.CASCADE)
-    num = models.IntegerField
-    type = models.CharField(max_length=1, choices=TYPE)
-    date_issued = models.DateField
-    date_expired = models.DateField
+
+class Car(models.Model):
+    license_plate = models.CharField(max_length=6)
+    brand = models.CharField(max_length=30)
+    model = models.CharField(max_length=30)
+    color = models.CharField(max_length=30)
+    owner = models.ManyToManyField(Owner, through='Ownership')
+
+
+
+class DriverLicense(models.Model):
+    TYPE_CHOICES = [
+        ('A', 'A'),
+        ('B', 'B'),
+        ('C', 'C'),
+        ('D', 'D'),
+        ('E', 'E')
+    ]
+    number = models.IntegerField()
+    date = models.DateField()
+    type = models.CharField(max_length=1, choices=TYPE_CHOICES)
+    owner = models.ForeignKey(Owner, on_delete=models.CASCADE)
+
 
 
 class Ownership(models.Model):
-    users = models.ForeignKey(User, on_delete=models.CASCADE)
-    cars = models.ForeignKey(Car, on_delete=models.CASCADE)
-    date_start = models.DateField()
-    date_end = models.DateField()
+    owner = models.ForeignKey(Owner, on_delete=models.CASCADE)
+    car = models.ForeignKey(Car, on_delete=models.CASCADE)
+    start_date = models.DateField()
+    end_date = models.DateField(null=True)

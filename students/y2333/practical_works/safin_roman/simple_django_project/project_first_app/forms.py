@@ -1,11 +1,15 @@
 from django import forms
-from .models import User
+from project_first_app.models import *
 
 
-class UserForm(forms.ModelForm):
+class OwnerForm(forms.ModelForm):
     class Meta:
-        model = User
+        model = Owner
+
         fields = [
             "first_name",
-            "second_name",
+            "last_name",
+            "birth_date",
+            "sex",
+            "user",
         ]

@@ -2,16 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>car_list</title>
 </head>
 <body>
 <ul>
     {% for object in object_list %}
-    <li>{{ object.mark }}</li>
-    <li>{{ object.model }}</li>
+        <li>{{ object.license_plate }}</li>
+        <li>{{ object.brand }}</li>
+        <li>{{ object.model }}</li>
+        <li>{{ object.color }}</li>
     <hr/>
     {% empty %}
-    <li>No objects yet.</li>
     {% endfor %}
 </ul>
 </body>

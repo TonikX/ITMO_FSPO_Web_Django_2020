@@ -1,7 +1,14 @@
 from django.contrib import admin
-from .models import Car, User, License, Ownership
+from .models import *
+
+
+class Admin(admin.ModelAdmin):
+    pass
+
+
 admin.site.register(User)
+admin.site.register(Owner)
 admin.site.register(Car)
-admin.site.register(License)
+admin.site.register(DriverLicense)
 admin.site.register(Ownership)
-# Register your models here.
+
