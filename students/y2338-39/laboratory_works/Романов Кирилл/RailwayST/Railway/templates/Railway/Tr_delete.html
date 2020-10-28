@@ -1,0 +1,33 @@
+{% extends 'Main.html' %}
+
+
+{% block train %}
+  <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Train delete </h2>
+            <h3 class="section-subheading text-muted">This is a form for deleting a table with specific train </h3>
+            <h4 class="section-subheading ">Are you sure you want to delete train №{{ trn.Train_ID }} ?</h4>
+        </div>
+                <form action="{% url 'train_delete' trn.pk %}" method="post" class="row row-centered row-conformity " >
+                {% csrf_token %}
+                    <div class="text-center">
+                        <div id="success"></div>
+                        <button class="btn btn-primary btn-xl text-uppercase align-middle" onclick={% url 'train_list_url' %}>Cancel</button>
+                    </div>
+                    <div class="text-center">
+                        <div id="success"></div>
+                        <button class="btn btn-danger btn-xl text-uppercase" id="sendMessageButton" type="submit">Delete</button>
+                    </div>
+                </form>
+
+  </div>
+{% endblock %}
+
+
+
+
+<!--
+
+
+
+-->

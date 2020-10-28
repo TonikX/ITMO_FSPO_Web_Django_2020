@@ -1,0 +1,47 @@
+{% extends 'LogReg.html' %}
+
+{% block Auth %}
+
+<div class="container">
+<br>  <p class="text-center"><a href=""></a></p>
+<hr>
+
+<div class="row justify-content-center">
+<div class="col-md-6">
+<div class="card">
+<header class="card-header">
+	<a href="{% url 'station_url' %}" class="float-right btn btn-outline-warning mt-1">Get back </a>
+	<h4 class="card-title mt-2">Sign up</h4>
+</header>
+<article class="card-body">
+<form id="add_form" method ="post">
+
+	{% for foo in form %}
+    {% csrf_token %}
+	    {{ foo.label}}
+        <br>
+        {{ foo }}
+        <br>
+	{% endfor %}
+    <br>
+    <div class="form-group">
+        <button id = "add_form" type="submit" class="btn btn-outline-secondary btn-block" > Sign in   </button>
+    </div> <!-- form-group// -->
+
+</form>
+</article> <!-- card-body end .// -->
+</div> <!-- card.// -->
+</div> <!-- col.//-->
+
+</div> <!-- row.//-->
+
+
+</div>
+<!--container end.//-->
+
+<br><br>
+
+<br><br>
+</article>
+
+{% endblock %}

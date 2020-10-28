@@ -1,0 +1,33 @@
+{% extends 'Main.html' %}
+
+
+{% block schedule %}
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Train create</h2>
+            <h3 class="section-subheading text-muted">This is a form for creating an exemaplar of train </h3>
+        </div>
+                <form action="{% url 'train_create_url' %}" method="post" class="row text-center " >
+                    {% csrf_token %}
+
+                        <div class="row align-items-center mb-5">
+                                <div class="col-md-6">
+                                    {% for fld in form %}
+                                        <div class="form-group">
+                                            <p class="help-block ">{{ fld.label}}</p>
+                                            {{ fld }}
+                                            {% if fld.errors %}
+                                                <div class="alert alert-danger" > {{ fld.errors }}</div>
+                                            {% endif %}
+                                        </div>
+                                    {% endfor %}
+                                    <div class="text-center">
+                                        <div id="success"></div>
+                                        <button class="btn btn-primary btn-xl text-uppercase" id="sendMessageButton" type="submit">Create Train</button>
+                                    </div>
+                                </div>
+                </form>
+
+{% endblock %}
+
+

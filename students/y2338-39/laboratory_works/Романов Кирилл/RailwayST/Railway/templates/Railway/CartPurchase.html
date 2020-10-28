@@ -1,0 +1,25 @@
+{% extends 'Main.html' %}
+
+{% block cart %}
+    <section class="page-section bg-light" id="portfolio">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Ticket purchase </h2>
+                    <h3 class="section-subheading text-muted">This is form to buy a ticket</h3>
+                </div>
+                    <form action="{% url 'ticketPurchase' %}" method="post" class="row text-center " >
+                    {% csrf_token %}
+                            Choose your train {{ Ticket.Train_ID }}
+                            Ticket price will be
+
+                </div>
+                <br><br>
+                <div class="text-center">
+                        <div id="success"></div>
+                        <button class="btn btn-primary btn-xl text-uppercase" id="sendMessageButton" type="submit">Buy a ticket</button>
+                </div>
+
+            </div>
+        </section>
+
+{% endblock %}
