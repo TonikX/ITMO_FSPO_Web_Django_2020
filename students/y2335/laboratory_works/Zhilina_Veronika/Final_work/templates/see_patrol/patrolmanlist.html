@@ -1,0 +1,159 @@
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">Меню</a>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href={% url 'output_profile' pk=user.id %}>Профиль</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/patrolman/">Капитаны отделения морской полиции</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/">Архив патрулирований</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/createPatrol/">Внести информацию о патрулировании</a>
+            </li>
+             <li class="nav-item">
+            {% if user.is_active %}
+
+                    <div class="collapse navbar-collapse justify-content-end">
+                        <li class="nav-item text-nowrap">
+                            <a class="btn btn-sm btn-outline-secondary" href="/accounts/logout/">Выйти</a>
+                        </li>
+                    </div>
+                {% else %}
+                    <div class="collapse navbar-collapse justify-content-end">
+
+                        <li class="nav-item text-nowrap">
+                            <a class="btn btn-sm btn-outline-secondary" href="/accounts/login/">Войти</a>
+                        </li>
+                    </div>
+                {% endif %}
+
+
+        </ul>
+    </div>
+</nav>
+<br><br><br>
+<link rel="stylesheet" href="https://bootstraptema.ru/plugins/2015/bootstrap3/bootstrap.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+<script src="https://bootstraptema.ru/plugins/jquery/jquery-1.11.3.min.js"></script>
+<script src="https://bootstraptema.ru/plugins/2015/b-v3-3-6/bootstrap.min.js"></script>
+<style>
+    body {
+        background: url(https://bootstraptema.ru/images/bg/bg-1.png)
+    }
+
+    #main {
+        background-color: #f2f2f2;
+        padding: 20px;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        -ms-border-radius: 4px;
+        -o-border-radius: 4px;
+        border-radius: 4px;
+        border-bottom: 4px solid #ddd;
+    }
+
+    #real-estates-detail #author img {
+        -webkit-border-radius: 100%;
+        -moz-border-radius: 100%;
+        -ms-border-radius: 100%;
+        -o-border-radius: 100%;
+        border-radius: 100%;
+        border: 5px solid #ecf0f1;
+        margin-bottom: 10px;
+    }
+
+    #real-estates-detail .sosmed-author i.fa {
+        width: 30px;
+        height: 30px;
+        border: 2px solid #bdc3c7;
+        color: #bdc3c7;
+        padding-top: 6px;
+        margin-top: 10px;
+    }
+
+    .panel-default .panel-heading {
+        background-color: #fff;
+    }
+
+    #real-estates-detail .slides li img {
+        height: 450px;
+    }
+</style>
+
+
+
+<div class="container">
+
+
+
+        <div class="col-lg-8 col-md-8 col-xs-12">
+            <div class="panel">
+                <div class="panel-body">
+                    <h2> Капитаны морской полиции</h2>
+                    <div id="myTabContent" class="tab-content">
+                        {% for patrol in patrolman %}
+                            <div class="tab-pane fade active in" id="detail">
+
+                                <table class="table table-th-block">
+                                    <tbody>
+
+                                    <tr>
+                                        <td class="active">Фамилия:</td>
+                                        <td>{{ patrol.surname}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="active">Имя</td>
+                                        <td>{{ patrol.name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="active">Опыт:</td>
+                                        <td>{{ patrol.experience }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="active">Должность:</td>
+                                        <td>{{ patrol.position }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="active">Дата рождения:</td>
+                                        <td>{{ patrol.date_birth }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="active">Дата начала работы:</td>
+                                        <td>{{ patrol.begin_work }}</td>
+                                    </tr>
+
+
+
+
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</div>
+
+</div><!-- /.main -->
+</div><!-- /.container -->
