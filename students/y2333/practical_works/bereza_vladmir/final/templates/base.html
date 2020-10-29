@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      {% block link %}
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+      {% endblock %}
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <style>
+body {
+    background: #E4DBBF ; /* Цвет фона и путь к файлу */
+    color: #000000; /* Цвет текста */
+   }
+</style>
+      {% block style %}
+<style>
+.breadcrumb li a:hover{
+ text-decoration: none;
+}
+.breadcrumb{
+ padding: 15px 15px 15px 50px;
+ margin: 0;
+ background: #DC5B21;
+ border-radius: 5px;
+ overflow: hidden;
+}
+.breadcrumb li{
+ float: left;
+ position: relative;
+}
+.breadcrumb li:first-child{
+ width: 70px;
+ height: 70px;
+ border-radius: 50%;
+ background: #DC5B21;
+ box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.2);
+ text-align: center;
+ position: absolute;
+ top: -10px;
+ left: -10px;
+ z-index: 1;
+ transition: all 0.1s ease 0s;
+}
+.breadcrumb li:hover:first-child{ transform: scale(1.1); }
+.breadcrumb li:first-child a{
+ font-size: 30px;
+ line-height: 70px;
+}
+.breadcrumb > li:first-child + li:before{ display: none; }
+.breadcrumb li.active,
+.breadcrumb li a{
+ font-size: 14px;
+ color: #E4DBBF;
+}
+</style>
+      {% endblock %}
+  </head>
+  <body>
+  {% csrf_token %}
+  <div class="container"><br />
+<div class="col-md-12">
+<ol class="breadcrumb">
+ <li><a class="fa fa-home"></a></li>
+    {% if user.is_authenticated %}
+<li><a href="{% url 'logout' %}">Выйти</a></li>
+<li><a href="{% url 'account_url' user.id %}">Личный кабинет</a></li>
+ <li><a href="{% url 'vacancy_url' %}">Вакансии</a></li>
+ <li><a href="{% url 'summary_url' %}">Резюме</a></li>
+        {% else %}
+         <li><a href="{% url 'login' %}">Войти</a></li>
+    {% endif %}
+
+</ol>
+</div>
+</div>
+          {% block content %}
+          {% endblock %}
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        {% block script %}
+
+        {% endblock %}
+    </body>
+</html>

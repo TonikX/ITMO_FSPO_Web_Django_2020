@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+  {% block content %}
+<form method="POST" action="{% url 'response_url' data_v.id user.id%}" enctype="multipart/form-data">
+{% csrf_token %}
+    <div class="container">
+        <div class="form-sec">
+        <h2> Форма для отправки резюме</h2>
+            <div class="form-group">
+                <label class="control-label required" for="select_h">Выбранная вакансия:</label>
+                <div>{{ data_v.profession }}</div>
+                <div>{{ data_v.busy_time }}</div>
+                <div>{{ data_v.salary }}</div>
+                <div>{{ data_v.information }}</div>
+                <div>{{ data_v.date_of_application }}</div>
+                <input name="form.id_vacancy" hidden value="{{data_v.id}}"/>
+
+
+             </div>
+            <div class="form-group">
+                <label class="control-label required" for="select_h">Выберете резюме:</label>
+                 <div class="select">
+                        <select id="form.id_summary" name="form.id_summary" class="form-control">
+                            <option value="" disabled selected>Резюме</option>
+                            {% for summary in data_s %}
+                                {% if data_e.id == summary.id_employer%}
+                            <option value= "{{summary.id}}"> {{summary.profession}} </option>
+                                {% endif %}
+                             {% endfor %}
+                        </select>
+                   </div>
+             </div>
+        Комментарий:
+                 <p>{{ form.total }}</p>
+        <input type="submit" value="Submit" class="btn btn-outline-secondary" href="{% url 'summary_url' %}">
+    </div>
+    </div>
+</form>
+{% endblock %}
