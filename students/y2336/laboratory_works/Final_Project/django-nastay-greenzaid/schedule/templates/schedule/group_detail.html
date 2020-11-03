@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>{{ object }}</h1>
+    <h3>Понедельник</h3>
+    <ul class="list-group list-group-flush">
+        {% for lesson in monday %}
+            <li class="list-group-item">{{ lesson.lesson_number }}: {{ lesson.teacher }} ведет {{ lesson.subject }} у {{ lesson.group }}</li>
+        {% empty %}
+            <li class="list-group-item">Пар нет</li>
+        {% endfor %}
+    </ul>
+    <h3>Вторник</h3>
+    <ul class="list-group list-group-flush">
+        {% for lesson in tuesday %}
+            <li class="list-group-item">{{ lesson.lesson_number }}: {{ lesson.teacher }} ведет {{ lesson.subject }} у {{ lesson.group }}</li>
+        {% empty %}
+            <li class="list-group-item">Пар нет</li>
+        {% endfor %}
+    </ul>
+    <h3>Среда</h3>
+    <ul class="list-group list-group-flush">
+        {% for lesson in wednesday %}
+            <li class="list-group-item">{{ lesson.lesson_number }}: {{ lesson.teacher }} ведет {{ lesson.subject }} у {{ lesson.group }}</li>
+        {% empty %}
+            <li class="list-group-item">Пар нет</li>
+        {% endfor %}
+    </ul>
+    <h3>Четверг</h3>
+    <ul class="list-group list-group-flush">
+        {% for lesson in thursday %}
+            <li class="list-group-item">{{ lesson.lesson_number }}: {{ lesson.teacher }} ведет {{ lesson.subject }} у {{ lesson.group }}</li>
+        {% empty %}
+            <li class="list-group-item">Пар нет</li>
+        {% endfor %}
+    </ul>
+    <h3>Пятница</h3>
+    <ul class="list-group list-group-flush">
+        {% for lesson in friday %}
+            <li class="list-group-item">{{ lesson.lesson_number }}: {{ lesson.teacher }} ведет {{ lesson.subject }} у {{ lesson.group }}</li>
+        {% empty %}
+            <li class="list-group-item">Пар нет</li>
+        {% endfor %}
+    </ul>
+    <h3>Суббота</h3>
+    <ul class="list-group list-group-flush">
+        {% for lesson in saturday %}
+            <li class="list-group-item">{{ lesson.lesson_number }}: {{ lesson.teacher }} ведет {{ lesson.subject }} у {{ lesson.group }}</li>
+        {% empty %}
+            <li class="list-group-item">Пар нет</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
