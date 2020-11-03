@@ -1,0 +1,74 @@
+{% extends 'app/base.html' %}
+
+{% block body %}
+    <div class="container_col semi-width">
+        <div class="container_row center-hor">
+            <h1 class="heading">Animals of our zoo</h1>
+        </div>
+
+        <div class="animals">
+            {% if animals %}
+                {% for animal in animals %}
+                    <div class="card">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/73/Lion_waiting_in_Namibia.jpg" alt="" class="card-image">
+
+                        <div class="card-description">
+                            <div class="card-description-row heading">
+                                <div class="card-description-row-value">Characteristic</div>
+                                <div class="card-description-row-value">Value</div>
+                            </div>
+                            <div class="card-description-row">
+                                <div class="card-description-row-value">Name</div>
+                                <div class="card-description-row-value">{{ animal.name }}</div>
+                            </div>
+                            <div class="card-description-row">
+                                <div class="card-description-row-value">Cell number</div>
+                                <div class="card-description-row-value">{{ animal.cell_number }}</div>
+                            </div>
+                            <div class="card-description-row">
+                                <div class="card-description-row-value">Nickname</div>
+                                <div class="card-description-row-value">{{ animal.nickname }}</div>
+                            </div>
+                            <div class="card-description-row">
+                                <div class="card-description-row-value">Age</div>
+                                <div class="card-description-row-value">{{ animal.age }}</div>
+                            </div>
+                            <div class="card-description-row">
+                                <div class="card-description-row-value">Weight</div>
+                                <div class="card-description-row-value">{{ animal.weight }} kg</div>
+                            </div>
+                            <div class="card-description-row">
+                                <div class="card-description-row-value">Purchase year</div>
+                                <div class="card-description-row-value">{{ animal.purchase_year }}</div>
+                            </div>
+                            <div class="card-description-row">
+                                <div class="card-description-row-value">Home country</div>
+                                <div class="card-description-row-value">{{ animal.home_country }}</div>
+                            </div>
+                            <div class="card-description-row">
+                                <div class="card-description-row-value">World part</div>
+                                <div class="card-description-row-value">{{ animal.world_part }}</div>
+                            </div>
+                            <div class="card-description-row">
+                                <div class="card-description-row-value">Climate</div>
+                                <div class="card-description-row-value">{{ animal.climate }}</div>
+                            </div>
+                            <div class="card-description-row">
+                                <div class="card-description-row-value">Cost</div>
+                                <div class="card-description-row-value">{{ animal.cost }}$</div>
+                            </div>
+                            <div class="card-description-row">
+                                <div class="card-description-row-value">Feed quantity</div>
+                                <div class="card-description-row-value">{{ animal.feed_quantity }}</div>
+                            </div>
+                            <div class="card-description-row">
+                                <div class="card-description-row-value">Diet</div>
+                                <div class="card-description-row-value">{{ animal.diet }}</div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
