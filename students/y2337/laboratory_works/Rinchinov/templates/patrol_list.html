@@ -1,0 +1,28 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+    <table
+           class="table">
+        <tr>
+            <th>Идентификатор патрульного</th>
+            <th>Имя</th>
+            <th>Возраст</th>
+            <th>Должность</th>
+            <th>Опыт работы</th>
+            <th>Номер лодки</th>
+        </tr>
+        {% for patrol in patrol_list %}
+            <tr>
+                <td>{{ patrol.id }}</td>
+                <td>{{ patrol.name }}</td>
+                <td>{{ patrol.age }}</td>
+                <td>{{ patrol.position }}</td>
+                <td>{{ patrol.exp }}</td>
+                <td>{{ patrol.boat_id }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+
+{% endblock %}
