@@ -1,0 +1,27 @@
+{% extends 'add.html' %}
+{% block body %}
+<span class="login100-form-title p-b-43">
+						Добавление рейса поезда
+					</span>
+
+                    <label>Регистрационный номер</label>
+					<div class="wrap-input100 validate-input">
+						<input class="input100" type="text" name="reg_number">
+					</div>
+                    <label>Пункт отправление</label>
+					<div class="wrap-input100 validate-input">
+						<input class="input100" type="text" name="departure">
+					</div>
+                    <label>Пункт прибытие</label>
+					<div class="wrap-input100 validate-input">
+						<input class="input100" type="text" name="destination">
+					</div>
+                    <label>Время и дата отправления</label>
+					<div class="wrap-input100 validate-input">
+						<input class="input100"  type="datetime" name="date_time_departure">
+					</div>
+                    <label>Время и дата прибытия</label>
+					<div class="wrap-input100 validate-input">
+						<input class="input100" type="datetime" name="date_time_destination">
+					</div>
+{% endblock %}

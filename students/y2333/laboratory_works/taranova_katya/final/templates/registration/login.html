@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block body %}
+				<form class="login100-form validate-form" action="{% url 'buy_url' %}" method="post">
+                {% csrf_token%}
+					<span class="login100-form-title p-b-34">
+
+						Вход
+					</span>
+					
+					<div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
+						<input id="first-name" class="input100" type="text" name="username" placeholder="Логин">
+						<span class="focus-input100"></span>
+					</div>
+					<div class="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate="Type password">
+						<input class="input100" type="password" name="password" placeholder="Пароль">
+						<span class="focus-input100"></span>
+					</div>
+					
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							Войти
+						</button>
+					</div>
+
+					<div class="w-full text-center">
+						<a href="{% url 'signup_url' %}" class="txt3">
+							Зарегистироваться
+						</a>
+					</div>
+				</form>
+{% endblock %}
