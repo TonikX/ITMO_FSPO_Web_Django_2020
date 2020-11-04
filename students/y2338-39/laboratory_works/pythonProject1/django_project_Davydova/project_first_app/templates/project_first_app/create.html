@@ -1,0 +1,17 @@
+{% extends 'project_first_app/file.html' %}
+{% block text %}
+Добавить заметку
+{% endblock %}
+
+{% block char %}
+<h1>Оформление заказа</h1>
+<form method="post" >
+    {% csrf_token %}
+    {{form.title}}
+    {{form.task}}
+            <input type="text" placeholder="Введите название" class="form-control"><br>
+    <textarea placeholder="Введите описание" class="form-control"></textarea><br>
+    <button type="submit" class="btn btn-success">Добавить</button>
+</form>
+{% endblock %}
+
