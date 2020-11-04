@@ -27,6 +27,9 @@ class Car (models.Model):
     color = models.CharField(max_length=50)
     state_number = models.CharField(max_length=10)
 
+    def __str__(self):
+        return self.mark
+
 
 class Ownership (models.Model):
     owner = models.ForeignKey(Owner, on_delete=models.CASCADE)
