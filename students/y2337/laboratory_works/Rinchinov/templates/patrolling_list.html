@@ -1,0 +1,25 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+    <table
+            class="table">
+        <tr>
+
+            <th>Дата</th>
+            <th>Номер лодки</th>
+            <th>Номер области</th>
+            <th>Количество нарушителей</th>
+        </tr>
+        {% for patrolling in patrolling_list %}
+            <tr>
+                <td>{{ patrolling.date }}</td>
+                <td>{{ patrolling.boat_id }}</td>
+                <td>{{ patrolling.area_id }}</td>
+                <td>{{ patrolling.count }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+    <table
+           class="table">
+        <tr>
+
+            <th>Номер лодки</th>
+            <th>Название лодки</th>
+        </tr>
+        {% for boat in boat_list %}
+            <tr>
+                <td>{{ boat.id }}</td>
+                <td>{{ boat.name }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+
+{% endblock %}
