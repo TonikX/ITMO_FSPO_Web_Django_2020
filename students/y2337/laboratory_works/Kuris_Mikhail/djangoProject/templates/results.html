@@ -1,0 +1,22 @@
+{% extends 'template.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <h1>Результаты</h1>
+    {% if results %}
+        {% for el in results %}
+            <div class="alert alert-warning mt-2">
+                <h3>Изделие: {{ el.item.title }}</h3>
+                <p>Производитель: {{ el.organizations.title }}</p>
+                <p>Ярмарка: {{ el.fair.fair_title }}</p>
+                <p>Количесто: {{ el.sell_variety }}</p>
+                <p>Цена: {{ el.sell_prise  }}</p>
+                <p>Покупатель: {{ el.buyer  }}</p>
+                <p><a href="results/update/{{el.item_id}}">Изменить</a> | <a href="deleteRes/{{el.item_id}}/">Удалить</a></p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Нет записей</p>
+    {% endif %}
+{% endblock %}
