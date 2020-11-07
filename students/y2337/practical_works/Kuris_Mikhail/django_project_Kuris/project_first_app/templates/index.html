@@ -2,7 +2,7 @@
 
 <html>
   <head>
-    <title>User: {{ user.id }}</title>
+    <title>User</title>
     <meta charset="utf-8">
   </head>
 
@@ -10,6 +10,9 @@
     <p>Имя: {{user.name}}</p>
     <p>Фамилия: {{user.surname}}</p>
     <p>Дата: {{user.birth_date}}</p>
+    <p>Паспорт: {{user.user.passport}}</p>
+    <p>Адрес: {{user.user.address}}</p>
+    <p>Национальность: {{user.user.nationality}}</p>
   </body>
 
 </html>

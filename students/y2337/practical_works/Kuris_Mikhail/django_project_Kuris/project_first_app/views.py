@@ -6,6 +6,7 @@ from project_first_app.forms import *
 from project_first_app.models import *
 
 
+
 def view_users(request, pk):
     user = Owner.objects.get(pk=pk)
 
