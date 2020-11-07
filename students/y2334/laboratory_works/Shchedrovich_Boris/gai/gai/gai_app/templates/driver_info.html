@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Driver</title>
+</head>
+<style>
+    input[name=submit]{
+       color: #f5dd5d;
+    }
+    body{
+        background: black;
+    }
+input {
+    width: 500px;
+    height: 50px;
+    background: grey;
+  text-align: center;
+}
+form {
+    padding-left: 35%;
+    padding-bottom: 30%;
+    color: white;
+}
+
+
+</style>
+<body>
+    ФИО: {{driver.fio_driver}} <br>
+    Телефон: {{driver.phone}} <br>
+    Водительское удостоверение: {{driver.license_number}} <br>
+</body>
+</html>

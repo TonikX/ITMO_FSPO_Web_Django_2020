@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление нарушений</title>
+</head>
+<style>
+    input[name=submit]{
+       color: #f5dd5d;
+    }
+    body{
+        background: black;
+    }
+input {
+    width: 500px;
+    height: 50px;
+    background: grey;
+  text-align: center;
+}
+form {
+    padding-left: 35%;
+    padding-bottom: 30%;
+    color: white;
+}
+
+
+</style>
+<body>
+    <form enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" formmethod="get" name="submit" value="Подтвердить">
+    </form>
+</body>
+</html>

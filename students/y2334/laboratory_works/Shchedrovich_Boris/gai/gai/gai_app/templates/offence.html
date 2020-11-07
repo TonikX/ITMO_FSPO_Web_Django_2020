@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Driver</title>
+</head>
+<body>
+{% for d in offence %}
+    Тип нарушения: {{d.offence}} <br>
+    Район нарушения: {{d.area}} <br>
+<!--    Водительское удостоверение: {{d.term_deprivation}} <br>-->
+{% endfor %}
+</body>
+</html>
