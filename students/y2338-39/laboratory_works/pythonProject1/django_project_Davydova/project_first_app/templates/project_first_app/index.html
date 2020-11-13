@@ -1,0 +1,17 @@
+{% extends 'project_first_app/file.html' %}
+{% block text %}
+{{title}}
+{% endblock %}
+
+{% block char %}
+<h1>Главная</h1>
+                {% for el in tasks %}
+                 <div class="alert alert-warning mt-2">
+                        <h3>{{el.title}}</h3>
+                        <p>{{el.task}}</p>
+                 </div>
+                {% endfor %}
+
+{% endblock %}
+
+
