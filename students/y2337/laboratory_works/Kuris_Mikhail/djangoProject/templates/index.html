@@ -1,0 +1,20 @@
+{% extends 'template.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <h1>Фирмы</h1>
+    {% if orgs %}
+        {% for el in orgs %}
+            <div class="alert alert-warning mt-2">
+                <h3>{{ el.title }}</h3>
+                <p>Местоположение: {{ el.location }}</p>
+                <p>Фамилия директора{{ el.surname }}</p>
+                <p>Телефон: {{ el.phone_number }}</p>
+
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Нет записей</p>
+    {% endif %}
+{% endblock %}

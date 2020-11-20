@@ -1,0 +1,22 @@
+<!doctype html>
+
+<html>
+  <head>
+    <title>All user</title>
+    <meta charset="utf-8">
+  </head>
+
+  <body>
+   {% for object in object_list %}
+        <p>Марка: {{object.mark}}</p>
+        <p>Модель: {{object.model}}</p>
+        <p>Цвет: {{object.color}}</p>
+       <p>Номер: {{object.state_number}}</p>
+        <hr/>
+    {% endfor %}
+  </body>
+
+</html>
+
+<!doctype html>
+

@@ -1,0 +1,24 @@
+<!doctype html>
+
+<html>
+  <head>
+    <title>All user</title>
+    <meta charset="utf-8">
+  </head>
+
+  <body>
+   {% for person in users %}
+        <p>Имя: {{person.name}}</p>
+        <p>Фамилия: {{person.surname}}</p>
+        <p>Дата: {{person.birth_date}}</p>
+        <p>Паспортные данные: {{person.user.passport}}</p>
+        <p>Адрес: {{person.user.address}}</p>
+        <p>Национальность: {{person.user.nationality}}</p>
+        <hr/>
+    {% endfor %}
+  </body>
+
+</html>
+
+<!doctype html>
+
