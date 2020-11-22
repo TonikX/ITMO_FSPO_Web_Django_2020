@@ -1,0 +1,20 @@
+{% extends 'base.html'%}
+
+
+{% block content %}
+
+    <h1> {{ game.name_game}} </h1>
+
+    <table>
+        <tr><td>Genre: </td><td>{{game.genre}}</td></tr>
+        <tr><td>Year: </td><td>{{game.year}}</td></tr>
+        <tr><td>Price:</td><td>{{game.price}}</td></tr>
+    </table>
+        Developer:<br>
+        {% for developer in game.developer.all %}
+             {{developer.name}}
+             {{developer.location}}<br>
+        {% endfor %}
+
+
+{% endblock %}

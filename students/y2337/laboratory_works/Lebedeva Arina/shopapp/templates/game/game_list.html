@@ -1,0 +1,23 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+    <h1 class="mb-5">Games:</h1>
+    {% for new in game%}
+    <div class="card mb-4" >
+      <div class="card-body">
+
+        <h5 class="card-title">{{new.name_game}}</h5>
+        <p class="card-text">{{new.genre}}</p>
+        <a href="{% url 'game_single' pk=new.id %}" class="btn btn-light">More</a>
+        <a href="{% url 'game/update/' pk=new.id %}" class="btn btn-light">Update</a>
+        <a href="{% url 'game_delete' pk=new.id %}" class="btn btn-light">Delete</a>
+
+
+      </div>
+    </div>
+    {% endfor %}
+    <a href="{% url 'add_game' %}" class="btn btn-light">Add</a>
+
+
+{% endblock %}
