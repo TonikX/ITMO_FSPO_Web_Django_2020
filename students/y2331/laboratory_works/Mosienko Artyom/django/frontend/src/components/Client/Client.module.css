@@ -1,0 +1,45 @@
+.div_table {
+    margin: 10vh auto;
+    background-color: #f0f0f0;
+    width: 98vw;
+    display: grid;
+    /*grid-template-columns: repeat(5, 5%) 2% 5% 1% 5% 8% 5% 10% 10% 8ch ;*/
+    overflow: auto;
+    border-collapse: collapse;
+}
+
+.text {
+    font-size: 23px;
+    text-align: center;
+    padding: 15px 0;
+    border: 1px rgba(0, 0, 0, 0.2) solid;
+}
+
+.head {
+    font-weight: bold;
+    color: white;
+    background-color: black;
+    border: 1px rgba(255, 255, 255, 0.2) solid !important;
+    text-align: center;
+}
+
+table, tr, td, th {
+    border: 1px black solid;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+.create {
+    float: right;
+    margin-right: 20px;
+}
+
+table tr td {
+    height: 30px;
+}
+
+.table .createT {
+    width: 95%;
+}
