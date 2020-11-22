@@ -1,0 +1,18 @@
+{% extends "mainApp/wrapper.html" %}
+{% block content %}
+    {% if profile.passport == 1 %}
+        <h2> No data, please, either authorise or register! </h2>
+        <li><a class="nav-link.btn-primary" href="authorisation">Authorisation</a></li>
+        <li><a class="nav-link.btn-success.ml-15" href="registration">Registration</a></li>
+    {% else %}
+        <div class="card" style="width: 18rem;position:relative; margin: 20px 40%; height:40px; width:300px">
+            <img class="card-img-top" src="https://www.insightsintoimpact.com/wp-content/uploads/2018/04/Thinking-and-Awareness.png" alt="Card image cap">
+            <div class="card-body">
+                 <h2 class="card-title">{{profile.name}}</h2>
+                <h5 class="card-text">Passport: {{profile.passport}}</h5>
+                <h5 class="card-text">Phone: {{profile.phone}}</h5>
+                <a href="exit" class="btn btn-danger" style="position:relative; margin: 10px 0%; height:40px; width:300px">Exit</a>
+            </div>
+        </div>
+    {% endif %}
+{% endblock%}

@@ -1,0 +1,24 @@
+{% extends "mainApp/wrapper.html" %}
+
+{% block content %}
+
+  {%for val in context%}
+    {% if val.lawyer.type == "a"%}
+    <div class="row" style="position: relative; margin: 15px;">
+      <div class="col-sm-6">
+        <div class="card">
+            <input disabled class="form-control" value="Lawyer: {{val.id}}">
+            <h3 class="card-header">{{val.lawyer.name}} ({{val.info.count_lawyer}})</h3>
+            <div class="card-body">
+                <h5 class="card-title">Phone: {{val.lawyer.phone}}</h5>
+                <p class="card-text">Email: {{val.lawyer.email}}</p>
+            </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  {% endfor %}
+<a  href = "start" class="btn btn-primary" style="position:relative; margin: 20px 30%; height:40px; width:300px">Register deal</a>
+<a  href = "start_meeting" class="btn btn-primary" style="position:relative; margin: 20px 30%; height:40px; width:300px">Register meeting</a>
+<a  href = "start_pay" class="btn btn-primary" style="position:relative; margin: 20px 30%; height:40px; width:300px">Register payment</a>
+{% endblock %}

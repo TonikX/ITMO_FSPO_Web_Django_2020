@@ -1,0 +1,14 @@
+{% extends "mainApp/wrapper.html" %}
+{% block content %}
+<h2 align="center">Registration</h2><h1 align="center">{{error}}</h1>
+<form method="post" style="margin: 10px 25%">
+    {% csrf_token %}
+    <h4>Date: </h4>
+    {{ form.date }}
+    <h4>Your lawyer: </h4>
+    {{ form.lawyer }}
+    <div class="col-10">
+      <button type="submit" class="btn btn-primary" style="position:relative; margin: 20px 30%; height:40px; width:300px">Register meeting</button>
+    </div>
+ </form>
+{% endblock %}
