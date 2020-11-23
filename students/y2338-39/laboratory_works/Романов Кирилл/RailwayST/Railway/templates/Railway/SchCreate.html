@@ -1,0 +1,59 @@
+{% extends 'Main.html' %}
+
+
+{% block schedule %}
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Schedule create</h2>
+            <h3 class="section-subheading text-muted">This is a form for creating schedules </h3>
+        </div>
+                <form action="{% url 'schedules_create_url' %}" method="post" class="row text-center " >
+                {% csrf_token %}
+
+                    <div class="mb-5 align-items-lg-end">
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <p class="help-block ">RideID -{{ form.RideId }}</p>
+                                {% if form.RideId.errors %}
+                                    <div class="alert alert-danger" role> {{ form.RideId.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="form-group">
+                                <p class="help-block ">DepartureTime -{{ form.DepartureTime }}</p>
+                                {% if form.DepartureTime.errors %}
+                                    <div class="alert alert-danger"> {{ form.DepartureTime.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="form-gro
+                            up">
+                                <p class="help-block ">ArrivalTime -{{ form.ArrivalTime }}</p>
+                                {% if form.ArrivalTime.errors %}
+                                    <div class="alert alert-danger"> {{ form.ArrivalTime.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="form-group">
+                                <p class="help-block ">StartAt -{{ form.StartAt }}</p>
+                                {% if form.StartAt.errors %}
+                                    <div class="alert alert-danger"> {{ form.StartAt.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="form-group">
+                                <p class="help-block ">FinishAt -{{ form.FinishAt}}</p>
+                                {% if form.FinishAt.errors %}
+                                    <div class="alert alert-danger"> {{ form.FinishAt.errors }}</div>
+                                {% endif %}
+                            </div>
+
+                    <div class="text-center">
+                        <div id="success"></div>
+                        <button class="btn btn-primary btn-xl text-uppercase" id="sendMessageButton" type="submit">Create Schedule</button>
+                    </div>
+
+                        </div>
+
+                </form>
+
+{% endblock %}
+
+
