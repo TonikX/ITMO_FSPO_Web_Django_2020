@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="content-wrapper">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% for student in students %}
+                <label for="{{ student.id }}">{{ student }}</label>
+                <input id="{{ student.id }}" name="student_grade" type="number" value="{{ student.grade.grade }}">
+                <br>
+            {% endfor %}
+            <button class="btn btn-outline-primary search-button" type="sumbit">Сохранить</button>
+        </form>
+    </div>
+{% endblock content %}

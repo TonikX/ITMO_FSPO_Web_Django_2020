@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h3>Выберете группу, для которой хотите посмотреть расписание</h3>
+    <ul class="list-group list-group-flush">
+        {% for group in object_list %}
+            <li class="list-group-item"><a href="{% url 'group-detail' group.id %}" style="text-decoration: none">{{ group }}</a></li>
+        {% endfor %}
+    </ul>
+    <h3>Выберете преподавателя, для которого хотите посмотреть расписание</h3>
+    <ul class="list-group list-group-flush">
+        {% for teacher in teachers %}
+            <li class="list-group-item"><a href="{% url 'teacher-detail' teacher.id %}"
+                                           style="text-decoration: none">{{ teacher.first_name }} {{ teacher.last_name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
