@@ -1,0 +1,17 @@
+{% extends 'probeg/base.html' %}
+{% block title %}{{ auto.full_title }} {{ auto.full_title.mark }}{% endblock title %}
+{% block content %}
+    <h2>{{ auto.mark }} {{ auto.model }}</h2>
+    <p>Год выпуска {{ auto.issue }}</p>
+    <p>Пробег {{ auto.mileage }} км</p>
+    <p>Цвет {{ auto.color }}</p>
+    <p>Двигатель {{ auto.engine }}</p>
+    <p>Коробка {{ auto.transmission }}</p>
+    <p>Привод {{ auto.gear }}</p>
+    <p>Количество владельцев {{ auto.count_owners }}</p>
+    <p>Цена: {{ auto.price }} руб.</p><hr>
+    <h4>Контакты</h4>
+    <p>{{ auto.user.first_name }} {{ auto.user.last_name }}</p>
+    <p>E-mail: {{ auto.user.email }}</p> <hr>
+    <p>{{ auto.user }} | {{ auto.pub_date }}</p>
+{% endblock content %}

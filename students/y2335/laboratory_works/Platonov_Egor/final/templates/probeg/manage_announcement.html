@@ -1,0 +1,23 @@
+{% extends 'probeg/base.html' %}
+
+{% block content %}
+    {% for auto in autos %}
+        <h2>{{ auto.mark }} {{ auto.model }}</h2></a>
+        <p>Год выпуска: {{ auto.issue }} г.в.</p>
+        <p>Пробег: {{ auto.mileage }} км</p>
+        <p>Коробка: {{ auto.transmission }}</p>
+        <p>Двигатель: {{ auto.engine }}</p>
+        <p>Привод: {{ auto.gear }}</p>
+        <p>Цвет: {{ auto.color }}</p>
+        <p>Описание: {{ auto.description }}</p>
+        <p>Количество владельцев: {{ auto.count_owners }}</p>
+        <p>Цена: {{ auto.price }}</p>
+        <p>{{ auto.user }} {{ auto.pub_date }}</p>
+        <form action="" method="post">
+            {% csrf_token %}
+            <button name="accept" value="{{ auto.id }}" type="submit" class="btn btn-success">Принять</button>
+            <button name="deni" value="{{ auto.id }}" type="submit" class="btn btn-danger">Отклонить</button>
+        </form>
+        <hr>
+    {% endfor %}
+{% endblock content %}

@@ -1,0 +1,18 @@
+{% extends 'probeg/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Добавить модель{% endblock title %}
+{% block content %}
+    <div class="row mt-5">
+        <div class="col-sm-12 col-md-6 offset-md-3">
+            {% if user.is_active %}
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <button type="submit" class="btn btn-success">Добавить</button>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,17 @@
+{% extends 'probeg/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Добавление записей{% endblock title %}
+{% block content %}
+    {% if user.is_active %}
+        <form action="" method="post">
+            {% csrf_token %}
+            <br> <button name="mark" type="submit" class="btn btn-success">Добавить марку</button> <br> <br>
+            <button name="model" type="submit" class="btn btn-success">Добавить модель</button> <br> <br>
+            <button name="transmission" type="submit" class="btn btn-success">Добавить коробку передач</button> <br> <br>
+            <button name="gear" type="submit" class="btn btn-success">Добавить привод</button> <br> <br>
+            <button name="manage_autos" type="submit" class="btn btn-success">Одобрение объявлений</button>
+        </form>
+    {% endif %}
+{% endblock content %}
