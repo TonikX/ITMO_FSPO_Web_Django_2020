@@ -1,0 +1,23 @@
+{% extends 'main.html' %}
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Enter ID</label><br>
+            <input type="number" name="composition_id" value="{{ composition.composition_id }}"/>
+        </p>
+        <p>
+            <label>Enter title</label><br>
+            <input type="text" name="title" value="{{ composition.title }}"/>
+        </p>
+        <p>
+            <label>Enter flower</label><br>
+            <input type="text" name="flower" value="{{ composition.flower_id }}"/>
+        </p>
+        <p>
+            <label>Enter contract</label><br>
+            <input type="number" name="contract_id" value="{{ composition.id_contract}}"/>
+        </p>
+        <input type="submit" value="Сохранить">
+    </form>
+{% endblock %}
